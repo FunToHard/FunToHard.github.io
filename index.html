@@ -11,6 +11,7 @@
             justify-content: space-between;
             background-color: #333;
             padding: 5px 10px;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
         }
 
         .navbar img {
@@ -48,7 +49,7 @@
         }
 
         .theme-toggle-button img {
-            height: 60px; /* Adjust the size as needed */
+            height: 60px; 
         }
 
         body.light-mode {
@@ -64,6 +65,30 @@
         .brand {
             font-size: 24px;
             font-weight: bold;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column; /* Stack items vertically */
+                align-items: flex-start; /* Align items to the start */
+            }
+
+            .navbar img {
+                height: 40px; /* Adjust the size for mobile */
+            }
+
+            .navbar a {
+                padding: 8px 10px; /* Reduce padding for mobile */
+            }
+
+            .theme-toggle-button img {
+                height: 20px; /* Adjust the size for mobile */
+            }
+
+            .brand {
+                font-size: 20px; /* Adjust the font size for mobile */
+            }
         }
     </style>
 </head>
