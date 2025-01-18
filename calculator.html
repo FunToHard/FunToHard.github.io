@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunToHard</title>
+    <style>
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 5px 10px;
+            flex-wrap: wrap; /* wrapping for smaller screens */
+        }
+
+        .navbar img {
+            height: 50px;
+            margin-right: 10px;
+            background-color: transparent;
+        }
+
+        .navbar a {
+            color: rgb(255, 255, 255);
+            padding: 10px 15px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #6b7a7e;
+            color: white;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .theme-toggle-button img {
+            height: 60px;
+        }
+
+        body.light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column; /* Stack items vertically */
+                align-items: flex-start; /* Align items to the start */
+            }
+
+            .navbar img {
+                height: 40px; /* Adjust the size for mobile */
+            }
+
+            .navbar a {
+                padding: 8px 10px; /* Reduce padding for mobile */
+            }
+
+            .theme-toggle-button img {
+                height: 20px; /* Adjust the size for mobile */
+            }
+
+            .brand {
+                font-size: 20px; /* Adjust the font size for mobile */
+            }
+        }
+
+        /* Additional styles for sections */
+        section {
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        #about, #contact {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div style="display: flex; align-items: center;">
+            <img src="logo.png" alt="Logo">
+            <a href="https://github.com/FunToHard" class="brand" style="margin: 0; padding-left: 10px; color: white; text-decoration: none;">FunToHard</a>
+        </div>
+        <a href="index.html">Home</a>
+        <a href="converter.html">C</a>
+        <a href="calculator.html">Converter</a>
+        <div class="toggle-container">
+            <button class="theme-toggle-button" id="theme-toggle">
+                <img src="sun.png" alt="Toggle Theme">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        
+
+        window.onload = function () {
+            const links = document.querySelectorAll('.navbar a');
+            const currentHash = window.location.hash || '#index';
+            links.forEach(link => {
+                if (link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            const toggleButton = document.getElementById('theme-toggle');
+            const toggleImage = toggleButton.querySelector('img');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.body.classList.add(currentTheme + '-mode');
+            toggleImage.src = currentTheme === 'dark' ? 'moon.png' : 'sun.png';
+
+            toggleButton.addEventListener('click', function () {
+                if (document.body.classList.contains('light-mode')) {
+                    document.body.classList.remove('light-mode');
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                    toggleImage.src = 'moon.png';
+                } else {
+                    document.body.classList.remove('dark-mode');
+                    document.body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
+                    toggleImage.src = 'sun.png';
+                }
+            });
+        };
+    </script>
+</body>
+    <title>Number Conversion Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        input, button, select {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <h1 style="color:#000000;">Number Conversion Calculator</h1>
+        <select id="baseSelect">
+            <option value="decimal">Decimal</option>
+            <option value="binary">Binary</option>
+            <option value="hexadecimal">Hexadecimal</option>
+            <option value="octal">Octal</option>
+        </select>
+        <input type="text" id="numberInput" placeholder="Enter number">
+        <button onclick="convertNumber()">Convert</button>
+        <button onclick="clearFields()">Clear</button>
+        <p id="binaryOutput"></p>
+        <p id="hexadecimalOutput"></p>
+        <p id="octalOutput"></p>
+    </div>
+
+    <div class="container">
+        <h1 style="color: rgb(0, 0, 0);">Complement and Sign Magnitude Calculator</h1>
+        <input type="text" id="binaryInput" placeholder="Enter binary number">
+        <button onclick="calculateComplements()">Calculate Complements</button>
+        <button onclick="clearComplementFields()">Clear</button>
+        <p id="onesComplementOutput"></p>
+        <p id="twosComplementOutput"></p>
+        <p id="signMagnitudeOutput"></p>
+    </div>
+
+    <script>
+        function padBinaryInput(binary) {
+            if (binary.length <= 8) {
+                return binary.padStart(8, '0');
+            } else if (binary.length <= 16) {
+                return binary.padStart(16, '0');
+            }
+            return binary;
+        }
+
+        function convertNumber() {
+            const baseSelect = document.getElementById('baseSelect').value;
+            let numberInput = document.getElementById('numberInput').value.trim();
+
+            let decimalNumber;
+
+            try {
+                switch (baseSelect) {
+                    case 'decimal':
+                        decimalNumber = parseInt(numberInput, 10);
+                        break;
+                    case 'binary':
+                        numberInput = padBinaryInput(numberInput);
+                        decimalNumber = parseInt(numberInput, 2);
+                        break;
+                    case 'hexadecimal':
+                        decimalNumber = parseInt(numberInput, 16);
+                        break;
+                    case 'octal':
+                        decimalNumber = parseInt(numberInput, 8);
+                        break;
+                    default:
+                        throw new Error("Invalid base selected");
+                }
+
+                if (isNaN(decimalNumber)) {
+                    throw new Error("Invalid number input");
+                }
+
+                const binaryOutput = decimalNumber.toString(2);
+                const hexadecimalOutput = decimalNumber.toString(16).toUpperCase();
+                const octalOutput = decimalNumber.toString(8);
+
+                document.getElementById('binaryOutput').innerText = "Binary: " + binaryOutput;
+                document.getElementById('hexadecimalOutput').innerText = "Hexadecimal: " + hexadecimalOutput;
+                document.getElementById('octalOutput').innerText = "Octal: " + octalOutput;
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        function calculateComplements() {
+            let binaryInput = document.getElementById('binaryInput').value.trim();
+            binaryInput = padBinaryInput(binaryInput);
+
+            const onesComplement = getOnesComplement(binaryInput);
+            const twosComplement = getTwosComplement(onesComplement);
+            const signMagnitude = getSignMagnitude(binaryInput);
+
+            document.getElementById('onesComplementOutput').innerText = "1's Complement: " + onesComplement;
+            document.getElementById('twosComplementOutput').innerText = "2's Complement: " + twosComplement;
+            document.getElementById('signMagnitudeOutput').innerText = "Sign Magnitude: " + signMagnitude;
+        }
+
+        function getOnesComplement(binary) {
+            let onesComplement = '';
+            for (let i = 0; i < binary.length; i++) {
+                onesComplement += binary[i] === '0' ? '1' : '0';
+            }
+            return onesComplement;
+        }
+
+        function getTwosComplement(onesComplement) {
+            let twosComplement = '';
+            let carry = 1;
+            for (let i = onesComplement.length - 1; i >= 0; i--) {
+                if (onesComplement[i] === '1' && carry === 1) {
+                    twosComplement = '0' + twosComplement;
+                } else if (onesComplement[i] === '0' && carry === 1) {
+                    twosComplement = '1' + twosComplement;
+                    carry = 0;
+                } else {
+                    twosComplement = onesComplement[i] + twosComplement;
+                }
+            }
+            return twosComplement;
+        }
+
+        function getSignMagnitude(binary) {
+            return binary[0] + binary.slice(1).padStart(binary.length - 1, '0');
+        }
+
+        function clearFields() {
+            document.getElementById('numberInput').value = '';
+            document.getElementById('binaryOutput').innerText = '';
+            document.getElementById('hexadecimalOutput').innerText = '';
+            document.getElementById('octalOutput').innerText = '';
+        }
+
+        function clearComplementFields() {
+            document.getElementById('binaryInput').value = '';
+            document.getElementById('onesComplementOutput').innerText = '';
+            document.getElementById('twosComplementOutput').innerText = '';
+            document.getElementById('signMagnitudeOutput').innerText = '';
+        }
+    </script>
+</body>
+</html>

@@ -11,7 +11,7 @@
             justify-content: space-between;
             background-color: #333;
             padding: 5px 10px;
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+            flex-wrap: wrap; /* wrapping for smaller screens */
         }
 
         .navbar img {
@@ -49,7 +49,7 @@
         }
 
         .theme-toggle-button img {
-            height: 60px; 
+            height: 60px;
         }
 
         body.light-mode {
@@ -90,6 +90,17 @@
                 font-size: 20px; /* Adjust the font size for mobile */
             }
         }
+
+        /* Additional styles for sections */
+        section {
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        #about, #contact {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -99,15 +110,29 @@
             <a href="https://github.com/FunToHard" class="brand" style="margin: 0; padding-left: 10px; color: white; text-decoration: none;">FunToHard</a>
         </div>
         <a href="#index">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="converter.html">C</a>
+        <a href="calculator.html">Converter</a>
         <div class="toggle-container">
             <button class="theme-toggle-button" id="theme-toggle">
                 <img src="sun.png" alt="Toggle Theme">
             </button>
         </div>
     </div>
+
+    <section id="index">
+        <h1 style="color: red;">This is Home page.</h1>
+        <p style="color: green;">Go to converter for CONVERTER.<br></p>
+        <p style="color: blue;">Includes Decimal to Binary.<br></p>
+        <p style="color: yellow;">Decimal to HexaDecimal.<br></p>
+        <p style="color: violet;">Decimal to Octal.<br></p>
+        <p style="color: cyan;">And the vice versa & other ones. I have no idea what to write.</p>
+    </section>
+
+       
+
     <script>
+        
+
         window.onload = function () {
             const links = document.querySelectorAll('.navbar a');
             const currentHash = window.location.hash || '#index';
