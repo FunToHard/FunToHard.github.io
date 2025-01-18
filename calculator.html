@@ -264,6 +264,11 @@
                 const octalOutput = decimalNumber.toString(8);
 
                 document.getElementById('binaryOutput').innerText = "Binary: " + binaryOutput;
+                document.getElementById('binaryOutput').style.color = "blue";
+                document.getElementById('hexadecimalOutput').innerText = "Hexadecimal: " + hexadecimalOutput;
+                document.getElementById('hexadecimalOutput').style.color = "green";
+                document.getElementById('octalOutput').innerText = "Octal: " + octalOutput;
+                document.getElementById('octalOutput').style.color = "red";
                 document.getElementById('hexadecimalOutput').innerText = "Hexadecimal: " + hexadecimalOutput;
                 document.getElementById('octalOutput').innerText = "Octal: " + octalOutput;
             } catch (error) {
@@ -278,7 +283,9 @@
             const onesComplement = getOnesComplement(binaryInput);
             const twosComplement = getTwosComplement(onesComplement);
             const signMagnitude = getSignMagnitude(binaryInput);
-
+            document.getElementById('onesComplementOutput').style.color = "blue";
+            document.getElementById('twosComplementOutput').style.color = "green";
+            document.getElementById('signMagnitudeOutput').style.color = "red";
             document.getElementById('onesComplementOutput').innerText = "1's Complement: " + onesComplement;
             document.getElementById('twosComplementOutput').innerText = "2's Complement: " + twosComplement;
             document.getElementById('signMagnitudeOutput').innerText = "Sign Magnitude: " + signMagnitude;
