@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+
+    <p>61. According to Mc Quail is at the apex of a pyramidal distribution</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="Intrapersonal communication">
+      <label for="ans1_1">Intrapersonal communication</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="Interpersonal communication">
+      <label for="ans1_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="Mass communication">
+      <label for="ans1_3">Mass communication</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="Group communication">
+      <label for="ans1_4">Group communication</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>62. ICT Stands for</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Information common technology">
+      <label for="ans2_1">Information common technology</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="Information and communication technology">
+      <label for="ans2_2">Information and communication technology</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="information and computer technology">
+      <label for="ans2_3">information and computer technology</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="interconnected technology">
+      <label for="ans2_4">interconnected technology</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>63. Who called our society as a dramatised society</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="Marshal McLuhan">
+      <label for="ans3_1">Marshal McLuhan</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="Raymond Williams">
+      <label for="ans3_2">Raymond Williams</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="James Augustus">
+      <label for="ans3_3">James Augustus</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="Guttenberg">
+      <label for="ans3_4">Guttenberg</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>64. Who developed w.w.w.</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Steve Jobs">
+      <label for="ans4_1">Steve Jobs</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="Tim-Bernes Lee">
+      <label for="ans4_2">Tim-Bernes Lee</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="Henry William Gates">
+      <label for="ans4_3">Henry William Gates</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="Michel Dell">
+      <label for="ans4_4">Michel Dell</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>65. It was in world wide web was developed</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="1991">
+      <label for="ans5_1">1991</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="1992">
+      <label for="ans5_2">1992</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="1993">
+      <label for="ans5_3">1993</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="1994">
+      <label for="ans5_4">1994</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>66. Radio &TV are the examples of</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="Group communication">
+      <label for="ans6_1">Group communication</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Interpersonal communication">
+      <label for="ans6_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="human communication">
+      <label for="ans6_3">human communication</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="mass communication">
+      <label for="ans6_4">mass communication</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>67. Comment is free; facts are sacred. who made this statement</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="C.P.Scott">
+      <label for="ans7_1">C.P.Scott</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="Brian Robert">
+      <label for="ans7_2">Brian Robert</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="William Francis">
+      <label for="ans7_3">William Francis</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="James Goldsmith">
+      <label for="ans7_4">James Goldsmith</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>68. Which is known as new media.</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="print">
+      <label for="ans8_1">print</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Radio">
+      <label for="ans8_2">Radio</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="TV">
+      <label for="ans8_3">TV</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="Internet">
+      <label for="ans8_4">Internet</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>69. Which is known as fifth estate.</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="print">
+      <label for="ans9_1">print</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Radio">
+      <label for="ans9_2">Radio</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="TV">
+      <label for="ans9_3">TV</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Social networks">
+      <label for="ans9_4">Social networks</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>70. The social media network of Google.</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="facebook">
+      <label for="ans10_1">facebook</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Twitter">
+      <label for="ans10_2">Twitter</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="Google plus">
+      <label for="ans10_3">Google plus</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="Linkedin">
+      <label for="ans10_4">Linkedin</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq8.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "Mass communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 61.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "Information and communication technology";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 62.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "Raymond Williams";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 63.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "Tim-Bernes Lee";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 64.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "1991";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 65.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "mass communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 66.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "C.P.Scott";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 67.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Internet";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 68.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Social networks";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 69.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "Google plus";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 70.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

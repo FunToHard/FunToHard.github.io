@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+    <p>31. The Egyptian system of picture writing is known as</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="Pictography">
+      <label for="ans1_1">Pictography</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="Cuneiform">
+      <label for="ans1_2">Cuneiform</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="Hieroglyph">
+      <label for="ans1_3">Hieroglyph</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="Script">
+      <label for="ans1_4">Script</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>32. Alphabetical writing was developed by</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Chinese">
+      <label for="ans2_1">Chinese</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="Greeks">
+      <label for="ans2_2">Greeks</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="Romans">
+      <label for="ans2_3">Romans</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="Persians">
+      <label for="ans2_4">Persians</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>33. The writing style developed by Sumerians is</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="Pictography">
+      <label for="ans3_1">Pictography</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="Cuneiform">
+      <label for="ans3_2">Cuneiform</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="Hieroglyph">
+      <label for="ans3_3">Hieroglyph</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="Script">
+      <label for="ans3_4">Script</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>34. added five vowels to the alphabets</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Sumerians">
+      <label for="ans4_1">Sumerians</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="Greeks">
+      <label for="ans4_2">Greeks</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="Romans">
+      <label for="ans4_3">Romans</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="Persians">
+      <label for="ans4_4">Persians</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>35. developed the capital and small letters</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="Sumerians">
+      <label for="ans5_1">Sumerians</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="Greeks">
+      <label for="ans5_2">Greeks</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="Romans">
+      <label for="ans5_3">Romans</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="Persians">
+      <label for="ans5_4">Persians</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>36. developed a kind of paper from papyrus plant</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="Chinese">
+      <label for="ans6_1">Chinese</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Greeks">
+      <label for="ans6_2">Greeks</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="Romans">
+      <label for="ans6_3">Romans</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="Persians">
+      <label for="ans6_4">Persians</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>37. The development of printing technology was in</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="15th Century">
+      <label for="ans7_1">15th Century</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="16th Century">
+      <label for="ans7_2">16th Century</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="17th century">
+      <label for="ans7_3">17th century</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="18th century">
+      <label for="ans7_4">18th century</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>38. Movable types and mechanical printing press were invented by</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="Herman Gundert">
+      <label for="ans8_1">Herman Gundert</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Benchamin Bailey">
+      <label for="ans8_2">Benchamin Bailey</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="Johan Guttenberg">
+      <label for="ans8_3">Johan Guttenberg</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="None of these">
+      <label for="ans8_4">None of these</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>39. The first book printed by Johan Guttenberg was on</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="Novel">
+      <label for="ans9_1">Novel</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Poetry">
+      <label for="ans9_2">Poetry</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="Religions">
+      <label for="ans9_3">Religions</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Culture">
+      <label for="ans9_4">Culture</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>40. Telegraphy was invented in</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="19th Century">
+      <label for="ans10_1">19th Century</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="16th Century">
+      <label for="ans10_2">16th Century</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="17th century">
+      <label for="ans10_3">17th century</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="18th century">
+      <label for="ans10_4">18th century</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq5.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "Hieroglyph";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 31.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "Greeks";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 32.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "Cuneiform";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 33.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "Greeks";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 34.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "Romans";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 35.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "Romans";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 36.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "15th Century";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 37.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Johan Guttenberg";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 38.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Religions";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 39.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "19th Century";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 40.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

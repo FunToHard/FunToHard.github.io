@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+    <p>11. What is Syntactics</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="The Study of the language in use">
+      <label for="ans1_1">The Study of the language in use</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="The study of relationship among words">
+      <label for="ans1_2">The study of relationship among words</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="The study of human interactions">
+      <label for="ans1_3">The study of human interactions</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="The relationship between words and sentences">
+      <label for="ans1_4">The relationship between words and sentences</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>12. The primary function of interpersonal communication is</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Reasoning">
+      <label for="ans2_1">Reasoning</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="relationship building">
+      <label for="ans2_2">relationship building</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="to inform">
+      <label for="ans2_3">to inform</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="to provide relaxation">
+      <label for="ans2_4">to provide relaxation</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>13. Feedback is considered as</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="Conviction">
+      <label for="ans3_1">Conviction</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="Motor action">
+      <label for="ans3_2">Motor action</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="description cycle">
+      <label for="ans3_3">description cycle</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="multilaterality">
+      <label for="ans3_4">multilaterality</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>14. The SMCR model of communication was devised by</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Shannon &Weaver">
+      <label for="ans4_1">Shannon &Weaver</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="David Berlo">
+      <label for="ans4_2">David Berlo</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="Wilbur Schramm">
+      <label for="ans4_3">Wilbur Schramm</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="Westley &McLean">
+      <label for="ans4_4">Westley &McLean</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>15. The Author of the book Communication Networks.</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="Daniel Belt">
+      <label for="ans5_1">Daniel Belt</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="Manuel Castle">
+      <label for="ans5_2">Manuel Castle</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="E.M.Rogers & D.L.Kincaid">
+      <label for="ans5_3">E.M.Rogers & D.L.Kincaid</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="Andre Gunder Frank">
+      <label for="ans5_4">Andre Gunder Frank</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>16. According to Wilbur Schramm which one of the following is a value free asset</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="Culture">
+      <label for="ans6_1">Culture</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Religion">
+      <label for="ans6_2">Religion</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="Technology">
+      <label for="ans6_3">Technology</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="All the above">
+      <label for="ans6_4">All the above</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>17. According to Global Village concept of Marshall MacLuhan</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="electronic media can help the masses unite to effect change">
+      <label for="ans7_1">electronic media can help the masses unite to effect change</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="maintain person to person relations">
+      <label for="ans7_2">maintain person to person relations</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="Most of new technologies make people scattered">
+      <label for="ans7_3">Most of new technologies make people scattered</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="The electronic technologies would not be able to enlighten the masses">
+      <label for="ans7_4">The electronic technologies would not be able to enlighten the masses</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>18. The process of mass communication is not</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="asymmetrical">
+      <label for="ans8_1">asymmetrical</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Personal">
+      <label for="ans8_2">Personal</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="anonymous">
+      <label for="ans8_3">anonymous</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="effected on a large scale">
+      <label for="ans8_4">effected on a large scale</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>19. Which of the communication has more emotional appeal</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="Intrapersonal">
+      <label for="ans9_1">Intrapersonal</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Interpersonal">
+      <label for="ans9_2">Interpersonal</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="Group">
+      <label for="ans9_3">Group</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Mass">
+      <label for="ans9_4">Mass</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>20. Communication needs a</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="Sender">
+      <label for="ans10_1">Sender</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Receiver">
+      <label for="ans10_2">Receiver</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="Channel">
+      <label for="ans10_3">Channel</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="All the Above">
+      <label for="ans10_4">All the Above</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq3.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "The relationship between words and sentences";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 11.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "relationship building";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 12.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "description cycle";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 13.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "David Berlo";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 14.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "E.M.Rogers & D.L.Kincaid";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 15.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "Technology";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 16.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "electronic media can help the masses unite to effect change";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 17.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Personal";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 18.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Interpersonal";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 19.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "All the Above";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 20.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

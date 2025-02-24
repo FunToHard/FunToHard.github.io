@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+
+    <p>71. The limited effects model of mass communication was a counter to</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="ABX model">
+      <label for="ans1_1">ABX model</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="Circular Model">
+      <label for="ans1_2">Circular Model</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="Diffusion model">
+      <label for="ans1_3">Diffusion model</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="Hypodermic needle theory">
+      <label for="ans1_4">Hypodermic needle theory</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>72. Denis Mc quail identified the mass media function of</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Surveillance of environment">
+      <label for="ans2_1">Surveillance of environment</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="transmission of culture">
+      <label for="ans2_2">transmission of culture</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="non formal education">
+      <label for="ans2_3">non formal education</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="promotion of democratic participation">
+      <label for="ans2_4">promotion of democratic participation</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>73. The interpretation process in communication takes place in</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="Sender">
+      <label for="ans3_1">Sender</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="Message">
+      <label for="ans3_2">Message</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="Receiver">
+      <label for="ans3_3">Receiver</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="Channel">
+      <label for="ans3_4">Channel</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>74. The process of translation of the messages into a code suitable for transmission to the receiver</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Decoding">
+      <label for="ans4_1">Decoding</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="Replication">
+      <label for="ans4_2">Replication</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="Encoding">
+      <label for="ans4_3">Encoding</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="Transmission">
+      <label for="ans4_4">Transmission</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>75. The Indian Institute of Mass Communication (IIMC) Kerala is located at</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="Trivandrum">
+      <label for="ans5_1">Trivandrum</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="Kottayam">
+      <label for="ans5_2">Kottayam</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="Cochin">
+      <label for="ans5_3">Cochin</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="Calicut">
+      <label for="ans5_4">Calicut</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>76. The process of filtering messages from source to receiver is called</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="hand out">
+      <label for="ans6_1">hand out</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="kinesics">
+      <label for="ans6_2">kinesics</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="degeneration">
+      <label for="ans6_3">degeneration</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="gate keeping">
+      <label for="ans6_4">gate keeping</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>77. The Consequence of Communication is</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="message">
+      <label for="ans7_1">message</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="Content">
+      <label for="ans7_2">Content</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="Source">
+      <label for="ans7_3">Source</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="effect">
+      <label for="ans7_4">effect</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>78. Communis means</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="Common">
+      <label for="ans8_1">Common</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Information">
+      <label for="ans8_2">Information</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="Code">
+      <label for="ans8_3">Code</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="communities">
+      <label for="ans8_4">communities</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>79. Which is the largest circulated daily in south India</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="Enadu">
+      <label for="ans9_1">Enadu</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Kerala Koumudi">
+      <label for="ans9_2">Kerala Koumudi</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="Malayala Manorama">
+      <label for="ans9_3">Malayala Manorama</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Dinakaran">
+      <label for="ans9_4">Dinakaran</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>80. Which of the following is not included in the Harold Lasswell's model</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="Whom">
+      <label for="ans10_1">Whom</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Who">
+      <label for="ans10_2">Who</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="What">
+      <label for="ans10_3">What</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="When">
+      <label for="ans10_4">When</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq9.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "Hypodermic needle theory";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 71.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "Surveillance of environment";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 72.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "Receiver";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 73.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "Encoding";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 74.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "Kottayam";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 75.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "gate keeping";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 76.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "effect";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 77.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Common";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 78.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Malayala Manorama";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 79.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "When";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 80.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

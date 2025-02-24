@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+    <p>21. Communication helps in</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="Persuaution">
+      <label for="ans1_1">Persuaution</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="entertainment">
+      <label for="ans1_2">entertainment</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="integration">
+      <label for="ans1_3">integration</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="all the above">
+      <label for="ans1_4">all the above</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>22. Which Model refers to Gatekeeper concept.</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Theadore Newcomb's">
+      <label for="ans2_1">Theadore Newcomb's</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="Shannon &Weaver's">
+      <label for="ans2_2">Shannon &Weaver's</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="Bruce Westleys &Mc Leans">
+      <label for="ans2_3">Bruce Westleys &Mc Leans</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="George Gerbner">
+      <label for="ans2_4">George Gerbner</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>23. Speaker-Speech-Audience are the elements of whose model of communication</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="Claude Shannon">
+      <label for="ans3_1">Claude Shannon</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="Aristotle">
+      <label for="ans3_2">Aristotle</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="Harold Lasswell">
+      <label for="ans3_3">Harold Lasswell</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="Wilbur Schramm">
+      <label for="ans3_4">Wilbur Schramm</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>24. Who introduced the concept of Noise in Communication.</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Wilbur Shramm">
+      <label for="ans4_1">Wilbur Shramm</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="George gerbner">
+      <label for="ans4_2">George gerbner</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="Charles Osgood">
+      <label for="ans4_3">Charles Osgood</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="Claude Shannon &Warren Weaver">
+      <label for="ans4_4">Claude Shannon &Warren Weaver</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>25. According to the Pyramidal distribution of Mc Quail	is at the apex of Pyramid</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="intrapersonal communication">
+      <label for="ans5_1">intrapersonal communication</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="interpersonal communication">
+      <label for="ans5_2">interpersonal communication</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="mass communication">
+      <label for="ans5_3">mass communication</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="group communication">
+      <label for="ans5_4">group communication</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>26. In a communication process sender is also known as</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="Receiver">
+      <label for="ans6_1">Receiver</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Encoder">
+      <label for="ans6_2">Encoder</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="Channel">
+      <label for="ans6_3">Channel</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="Decoder">
+      <label for="ans6_4">Decoder</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>27. In a communication process Receiver is also known as</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="Sender">
+      <label for="ans7_1">Sender</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="Encoder">
+      <label for="ans7_2">Encoder</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="Channel">
+      <label for="ans7_3">Channel</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="Decoder">
+      <label for="ans7_4">Decoder</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>28. “The Media do not do things to people rather people do things with media" relate with</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="The Cultural Theory">
+      <label for="ans8_1">The Cultural Theory</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Uses and gratification theory">
+      <label for="ans8_2">Uses and gratification theory</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="Symbolic interaction theory">
+      <label for="ans8_3">Symbolic interaction theory</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="Cultivation Theory">
+      <label for="ans8_4">Cultivation Theory</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>29. Communication is the transfer or conveying of meaning. This definition was given by</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="Claude Shannon">
+      <label for="ans9_1">Claude Shannon</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Oxford dictionary">
+      <label for="ans9_2">Oxford dictionary</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="Charles Osgood">
+      <label for="ans9_3">Charles Osgood</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Wilbur Schramm">
+      <label for="ans9_4">Wilbur Schramm</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>30. Kinesics is the science of</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="Printing">
+      <label for="ans10_1">Printing</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Language">
+      <label for="ans10_2">Language</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="Writing">
+      <label for="ans10_3">Writing</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="Body language">
+      <label for="ans10_4">Body language</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq4.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "all the above";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 21.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "Bruce Westleys &Mc Leans";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 22.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "Aristotle";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 23.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "Claude Shannon &Warren Weaver";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 24.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "mass communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 25.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "Encoder";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 26.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "Decoder";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 27.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Uses and gratification theory";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 28.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Oxford dictionary";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 29.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "Body language";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 30.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

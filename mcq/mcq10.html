@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+
+    <p>91. Facebook is a</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="Blog">
+      <label for="ans1_1">Blog</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="Social network">
+      <label for="ans1_2">Social network</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="Website">
+      <label for="ans1_3">Website</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="Portal">
+      <label for="ans1_4">Portal</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>92. The first paragraph of a news story is</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Body">
+      <label for="ans2_1">Body</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="Headline">
+      <label for="ans2_2">Headline</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="Lead">
+      <label for="ans2_3">Lead</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="Text">
+      <label for="ans2_4">Text</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>93. Caption means</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="name of the reporter">
+      <label for="ans3_1">name of the reporter</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="place of origin of news">
+      <label for="ans3_2">place of origin of news</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="text accompanying a photo">
+      <label for="ans3_3">text accompanying a photo</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="name of publisher">
+      <label for="ans3_4">name of publisher</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>94. PTI is a</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="news channel">
+      <label for="ans4_1">news channel</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="news portal">
+      <label for="ans4_2">news portal</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="news paper">
+      <label for="ans4_3">news paper</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="news agency">
+      <label for="ans4_4">news agency</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>95. The director of the film Aparajitha</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="Phalke">
+      <label for="ans5_1">Phalke</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="Mrinal Sen">
+      <label for="ans5_2">Mrinal Sen</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="Syam Benegal">
+      <label for="ans5_3">Syam Benegal</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="Satayajith Ray">
+      <label for="ans5_4">Satayajith Ray</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>96. The Malayalam news paper which started the first online edition</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="Malayala Manorama">
+      <label for="ans6_1">Malayala Manorama</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Mathrubhumi">
+      <label for="ans6_2">Mathrubhumi</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="Deepika">
+      <label for="ans6_3">Deepika</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="Kerala Kaumudi">
+      <label for="ans6_4">Kerala Kaumudi</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>97. Dream weaver is a</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="page making software">
+      <label for="ans7_1">page making software</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="video editing software">
+      <label for="ans7_2">video editing software</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="sound editing software">
+      <label for="ans7_3">sound editing software</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="website creating software">
+      <label for="ans7_4">website creating software</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>98. Author of the book Mass Communication in India</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="Uma Narula">
+      <label for="ans8_1">Uma Narula</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="B.N.Ahuja">
+      <label for="ans8_2">B.N.Ahuja</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="Seema Hasan">
+      <label for="ans8_3">Seema Hasan</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="Keval.J.Kumar">
+      <label for="ans8_4">Keval.J.Kumar</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>99. The founder editor of Mathrubhumi daily</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="M.Kesava Menon">
+      <label for="ans9_1">M.Kesava Menon</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="K.P.Kesavamenon">
+      <label for="ans9_2">K.P.Kesavamenon</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="M.D.Nalappattu">
+      <label for="ans9_3">M.D.Nalappattu</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="M.P.Veerendrakumar">
+      <label for="ans9_4">M.P.Veerendrakumar</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>100. Vidura is a journal published by</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="PTI">
+      <label for="ans10_1">PTI</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Press Council of India">
+      <label for="ans10_2">Press Council of India</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="IIMC">
+      <label for="ans10_3">IIMC</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="Press Institute of India">
+      <label for="ans10_4">Press Institute of India</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='../donation.html'">Donate</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "Social network";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 91.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "Lead";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 92.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "text accompanying a photo";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 93.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "news agency";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 94.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "Satayajith Ray";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 95.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "Malayala Manorama";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 96.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "website creating software";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 97.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Keval.J.Kumar";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 98.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "K.P.Kesavamenon";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 99.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "Press Institute of India";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 100.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

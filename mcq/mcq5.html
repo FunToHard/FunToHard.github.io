@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+    <p>41. The twentieth century began with the invention of</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="Photography">
+      <label for="ans1_1">Photography</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="Printing">
+      <label for="ans1_2">Printing</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="Cinema">
+      <label for="ans1_3">Cinema</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="Radio">
+      <label for="ans1_4">Radio</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>42. Radio broadcasting began in</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="1910">
+      <label for="ans2_1">1910</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="1915">
+      <label for="ans2_2">1915</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="1920">
+      <label for="ans2_3">1920</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="1925">
+      <label for="ans2_4">1925</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>43. TV telecasting began in</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="1925">
+      <label for="ans3_1">1925</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="1930">
+      <label for="ans3_2">1930</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="1935">
+      <label for="ans3_3">1935</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="1940">
+      <label for="ans3_4">1940</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>44. has turned the world into a global village</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Radio">
+      <label for="ans4_1">Radio</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="Cinema">
+      <label for="ans4_2">Cinema</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="TV">
+      <label for="ans4_3">TV</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="Internet">
+      <label for="ans4_4">Internet</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>45. occurs when an individual sends and receives messages internally</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="Intrapersonal communication">
+      <label for="ans5_1">Intrapersonal communication</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="Interpersonal communication">
+      <label for="ans5_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="Mass communication">
+      <label for="ans5_3">Mass communication</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="Group communication">
+      <label for="ans5_4">Group communication</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>46. Thinking and meditation are the functions of</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="Intrapersonal communication">
+      <label for="ans6_1">Intrapersonal communication</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Interpersonal communication">
+      <label for="ans6_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="Mass communication">
+      <label for="ans6_3">Mass communication</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="Group communication">
+      <label for="ans6_4">Group communication</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>47. The Johari Window model was developed by</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="Shannon & Weaver">
+      <label for="ans7_1">Shannon & Weaver</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="Joseph Luft &Harrington Ingham">
+      <label for="ans7_2">Joseph Luft &Harrington Ingham</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="Wilbur Schramm">
+      <label for="ans7_3">Wilbur Schramm</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="Denis Mc Quail">
+      <label for="ans7_4">Denis Mc Quail</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>48. is the basis of all communication</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="Intrapersonal communication">
+      <label for="ans8_1">Intrapersonal communication</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Interpersonal communication">
+      <label for="ans8_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="Mass communication">
+      <label for="ans8_3">Mass communication</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="Group communication">
+      <label for="ans8_4">Group communication</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>49. Any Mechanical device that multiplies messages and takes it to a large number people simultaneously is called</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="Intrapersonal communication">
+      <label for="ans9_1">Intrapersonal communication</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Interpersonal communication">
+      <label for="ans9_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="Mass communication">
+      <label for="ans9_3">Mass communication</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Group communication">
+      <label for="ans9_4">Group communication</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>50. Gate keeping is related with</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="Intrapersonal communication">
+      <label for="ans10_1">Intrapersonal communication</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Interpersonal communication">
+      <label for="ans10_2">Interpersonal communication</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="Mass communication">
+      <label for="ans10_3">Mass communication</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="Group communication">
+      <label for="ans10_4">Group communication</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq6.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "Cinema";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 41.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "1920";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 42.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "1925";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 43.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "Internet";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 44.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "Intrapersonal communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 45.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "Intrapersonal communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 46.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "Joseph Luft &Harrington Ingham";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 47.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Interpersonal communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 48.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Mass communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 49.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "Mass communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 50.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>

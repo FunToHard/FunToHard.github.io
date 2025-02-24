@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MCQ</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MCQ Test</h1>
+    <p>51. The term kinesics was coined by</p>
+    <form id="mcqForm1">
+      <input type="radio" id="ans1_1" name="answer1" value="Joseph Luft">
+      <label for="ans1_1">Joseph Luft</label><br>
+      <input type="radio" id="ans1_2" name="answer1" value="Harrington Ingham">
+      <label for="ans1_2">Harrington Ingham</label><br>
+      <input type="radio" id="ans1_3" name="answer1" value="Ray Birdwhistell">
+      <label for="ans1_3">Ray Birdwhistell</label><br>
+      <input type="radio" id="ans1_4" name="answer1" value="none of these">
+      <label for="ans1_4">none of these</label><br>
+    </form>
+    <p id="result1"></p>
+
+    <p>52. Kinesics is related with</p>
+    <form id="mcqForm2">
+      <input type="radio" id="ans2_1" name="answer2" value="Verbal Communication">
+      <label for="ans2_1">Verbal Communication</label><br>
+      <input type="radio" id="ans2_2" name="answer2" value="Non Verbal Communication">
+      <label for="ans2_2">Non Verbal Communication</label><br>
+      <input type="radio" id="ans2_3" name="answer2" value="Mass communication">
+      <label for="ans2_3">Mass communication</label><br>
+      <input type="radio" id="ans2_4" name="answer2" value="Group communication">
+      <label for="ans2_4">Group communication</label><br>
+    </form>
+    <p id="result2"></p>
+
+    <p>53. The Mathematical Model of Shannon &Weaver was altered by</p>
+    <form id="mcqForm3">
+      <input type="radio" id="ans3_1" name="answer3" value="Harold.D.Lasswell">
+      <label for="ans3_1">Harold.D.Lasswell</label><br>
+      <input type="radio" id="ans3_2" name="answer3" value="Wilbur Schramm">
+      <label for="ans3_2">Wilbur Schramm</label><br>
+      <input type="radio" id="ans3_3" name="answer3" value="Fredrick.S.Siebead">
+      <label for="ans3_3">Fredrick.S.Siebead</label><br>
+      <input type="radio" id="ans3_4" name="answer3" value="Gerbner">
+      <label for="ans3_4">Gerbner</label><br>
+    </form>
+    <p id="result3"></p>
+
+    <p>54. The four theories of Press was Put forwarded By</p>
+    <form id="mcqForm4">
+      <input type="radio" id="ans4_1" name="answer4" value="Harold.D.Lasswell">
+      <label for="ans4_1">Harold.D.Lasswell</label><br>
+      <input type="radio" id="ans4_2" name="answer4" value="Wilbur Schramm">
+      <label for="ans4_2">Wilbur Schramm</label><br>
+      <input type="radio" id="ans4_3" name="answer4" value="Fredrick.S.Siebead">
+      <label for="ans4_3">Fredrick.S.Siebead</label><br>
+      <input type="radio" id="ans4_4" name="answer4" value="all the above">
+      <label for="ans4_4">all the above</label><br>
+    </form>
+    <p id="result4"></p>
+
+    <p>55. The Libertarian theory is also known as</p>
+    <form id="mcqForm5">
+      <input type="radio" id="ans5_1" name="answer5" value="Communist media theory">
+      <label for="ans5_1">Communist media theory</label><br>
+      <input type="radio" id="ans5_2" name="answer5" value="Freepress theory">
+      <label for="ans5_2">Freepress theory</label><br>
+      <input type="radio" id="ans5_3" name="answer5" value="Authoritarian Theory">
+      <label for="ans5_3">Authoritarian Theory</label><br>
+      <input type="radio" id="ans5_4" name="answer5" value="Social responsibility theory">
+      <label for="ans5_4">Social responsibility theory</label><br>
+    </form>
+    <p id="result5"></p>
+
+    <p>56. Who was the owner of the The Hindu.</p>
+    <form id="mcqForm6">
+      <input type="radio" id="ans6_1" name="answer6" value="M.K.Gandhi">
+      <label for="ans6_1">M.K.Gandhi</label><br>
+      <input type="radio" id="ans6_2" name="answer6" value="Motilal Ghosh">
+      <label for="ans6_2">Motilal Ghosh</label><br>
+      <input type="radio" id="ans6_3" name="answer6" value="Surendranath Banerjee">
+      <label for="ans6_3">Surendranath Banerjee</label><br>
+      <input type="radio" id="ans6_4" name="answer6" value="Kasthuri Ranga Iyengar">
+      <label for="ans6_4">Kasthuri Ranga Iyengar</label><br>
+    </form>
+    <p id="result6"></p>
+
+    <p>57. Wireless telegraphy was developed by</p>
+    <form id="mcqForm7">
+      <input type="radio" id="ans7_1" name="answer7" value="J.C.Maxwell">
+      <label for="ans7_1">J.C.Maxwell</label><br>
+      <input type="radio" id="ans7_2" name="answer7" value="Thomas Edison">
+      <label for="ans7_2">Thomas Edison</label><br>
+      <input type="radio" id="ans7_3" name="answer7" value="Heinrich Hertz">
+      <label for="ans7_3">Heinrich Hertz</label><br>
+      <input type="radio" id="ans7_4" name="answer7" value="Guglielmo Marconi">
+      <label for="ans7_4">Guglielmo Marconi</label><br>
+    </form>
+    <p id="result7"></p>
+
+    <p>58. Which of the following is true for communication model of Schramm.</p>
+    <form id="mcqForm8">
+      <input type="radio" id="ans8_1" name="answer8" value="Context of stimuli has been used">
+      <label for="ans8_1">Context of stimuli has been used</label><br>
+      <input type="radio" id="ans8_2" name="answer8" value="Noise &feedback has been added.">
+      <label for="ans8_2">Noise &feedback has been added.</label><br>
+      <input type="radio" id="ans8_3" name="answer8" value="Encoding has been replaced">
+      <label for="ans8_3">Encoding has been replaced</label><br>
+      <input type="radio" id="ans8_4" name="answer8" value="Decoding has been replaced">
+      <label for="ans8_4">Decoding has been replaced</label><br>
+    </form>
+    <p id="result8"></p>
+
+    <p>59. Interpersonal communication is</p>
+    <form id="mcqForm9">
+      <input type="radio" id="ans9_1" name="answer9" value="Communication with the crowd">
+      <label for="ans9_1">Communication with the crowd</label><br>
+      <input type="radio" id="ans9_2" name="answer9" value="Communication with Public">
+      <label for="ans9_2">Communication with Public</label><br>
+      <input type="radio" id="ans9_3" name="answer9" value="Communication between two individuals">
+      <label for="ans9_3">Communication between two individuals</label><br>
+      <input type="radio" id="ans9_4" name="answer9" value="Communication with his own mind.">
+      <label for="ans9_4">Communication with his own mind.</label><br>
+    </form>
+    <p id="result9"></p>
+
+    <p>60. According to whom mass media are primarily moulders of society as well as reflectors of it.</p>
+    <form id="mcqForm10">
+      <input type="radio" id="ans10_1" name="answer10" value="Denis Mc Quail">
+      <label for="ans10_1">Denis Mc Quail</label><br>
+      <input type="radio" id="ans10_2" name="answer10" value="Harold Lasswell">
+      <label for="ans10_2">Harold Lasswell</label><br>
+      <input type="radio" id="ans10_3" name="answer10" value="Wilbur Schramm">
+      <label for="ans10_3">Wilbur Schramm</label><br>
+      <input type="radio" id="ans10_4" name="answer10" value="George Gerbner">
+      <label for="ans10_4">George Gerbner</label><br>
+    </form>
+    <p id="result10"></p>
+
+    <button type="button" onclick="checkAnswers()">Submit Answers</button>
+    <button type="button" onclick="location.href='mcq7.html'">Next Page</button>
+</div>
+
+<script>
+function checkAnswers() {
+    checkAnswer1();
+    checkAnswer2();
+    checkAnswer3();
+    checkAnswer4();
+    checkAnswer5();
+    checkAnswer6();
+    checkAnswer7();
+    checkAnswer8();
+    checkAnswer9();
+    checkAnswer10();
+}
+
+function checkAnswer1() {
+  var answer = document.querySelector('input[name="answer1"]:checked');
+  var result = document.getElementById("result1");
+  var correctAns = "Ray Birdwhistell";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 51.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans1_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer2() {
+  var answer = document.querySelector('input[name="answer2"]:checked');
+  var result = document.getElementById("result2");
+  var correctAns = "Non Verbal Communication";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 52.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans2_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer3() {
+  var answer = document.querySelector('input[name="answer3"]:checked');
+  var result = document.getElementById("result3");
+  var correctAns = "Wilbur Schramm";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 53.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans3_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer4() {
+  var answer = document.querySelector('input[name="answer4"]:checked');
+  var result = document.getElementById("result4");
+  var correctAns = "Fredrick.S.Siebead";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 54.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans4_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans4_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer5() {
+  var answer = document.querySelector('input[name="answer5"]:checked');
+  var result = document.getElementById("result5");
+  var correctAns = "Freepress theory";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 55.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans5_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans5_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer6() {
+  var answer = document.querySelector('input[name="answer6"]:checked');
+  var result = document.getElementById("result6");
+  var correctAns = "Kasthuri Ranga Iyengar";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 56.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans6_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans6_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer7() {
+  var answer = document.querySelector('input[name="answer7"]:checked');
+  var result = document.getElementById("result7");
+  var correctAns = "Guglielmo Marconi";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 57.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans7_4"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer8() {
+  var answer = document.querySelector('input[name="answer8"]:checked');
+  var result = document.getElementById("result8");
+  var correctAns = "Noise &feedback has been added.";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 58.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans8_2"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer9() {
+  var answer = document.querySelector('input[name="answer9"]:checked');
+  var result = document.getElementById("result9");
+  var correctAns = "Communication between two individuals";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 59.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans9_3"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+
+function checkAnswer10() {
+  var answer = document.querySelector('input[name="answer10"]:checked');
+  var result = document.getElementById("result10");
+  var correctAns = "Denis Mc Quail";
+
+  if (!answer) {
+    result.textContent = "Please select an answer for question 60.";
+    return;
+  }
+
+  if (answer.value === correctAns) {
+    result.textContent = "Correct!";
+    document.querySelector('label[for="ans10_1"]').className = "correct";
+  } else {
+    result.textContent = "Incorrect.";
+    document.querySelector('label[for="ans10_1"]').className = "correct";
+    document.querySelector('label[for="' + answer.id + '"]').className = "incorrect";
+  }
+}
+</script>
+
+</body>
+</html>
