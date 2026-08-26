@@ -1,0 +1,49 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="w-full border-t border-[var(--border-subtle)] bg-[var(--bg-surface)]/60 mt-16 font-sans text-xs transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-2 font-serif font-bold text-base text-[var(--text-primary)]">
+          <span class="w-6 h-6 rounded bg-gradient-to-br from-amber-400 to-amber-600 text-gray-950 flex items-center justify-center font-display font-black text-xs">Φ</span>
+          <span>funtohard / episteme</span>
+        </div>
+        <p class="text-[var(--text-secondary)] leading-relaxed text-xs">
+          An open digital repository and academic research journal dedicated to Epistemology, Philosophy of Computation, Intellectual History, and Philosophy of Mind.
+        </p>
+      </div>
+
+      <div>
+        <div class="font-semibold text-[var(--text-primary)] mb-3">Indexes &amp; AI Feeds</div>
+        <ul class="space-y-2 text-[var(--text-secondary)]">
+          <li><a href="/agents.md" class="hover:text-[var(--accent-primary)] transition">Agent Authoring Guide (/agents.md)</a></li>
+          <li><a href="/rss.xml" class="hover:text-[var(--accent-primary)] transition">RSS Feed (/rss.xml)</a></li>
+          <li><a href="/sitemap-index.xml" class="hover:text-[var(--accent-primary)] transition">XML Sitemap</a></li>
+          <li><a href="/llms.txt" class="hover:text-[var(--accent-primary)] transition">LLMs Context (/llms.txt)</a></li>
+          <li><a href="/robots.txt" class="hover:text-[var(--accent-primary)] transition">Robots.txt</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-semibold text-[var(--text-primary)] mb-3">Philosophical Maxim</div>
+        <blockquote class="italic text-[var(--text-secondary)] border-l-2 border-[var(--accent-primary)] pl-3 text-xs leading-relaxed">
+          "The unexamined life is not worth living."
+          <span class="block not-italic font-normal text-[11px] mt-1.5 text-[var(--accent-primary)] font-serif">— Socrates (Plato's Apology)</span>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-[var(--border-subtle)] flex flex-col sm:flex-row items-center justify-between text-[var(--text-muted)] text-[11px] gap-4">
+      <div>
+        © {currentYear} funtohard philosophy journal. Built with Astro &amp; KaTeX. Zero client hydration debt.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/funtohard/funtohard.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--accent-primary)] transition">
+          GitHub Repository
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

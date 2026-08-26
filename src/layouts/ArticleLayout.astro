@@ -1,0 +1,541 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  category?: string;
+  tags: string[];
+  author?: string;
+  headings?: { depth: number; slug: string; text: string }[];
+  type?: 'research' | 'thought';
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  category,
+  tags,
+  author = "funtohard",
+  headings = [],
+  type = 'research'
+} = Astro.props;
+
+const formattedDate = new Date(pubDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const isoDate = pubDate.toISOString();
+const currentYear = pubDate.getFullYear();
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishDate={pubDate}
+  author={author}
+>
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[var(--accent-primary)] to-amber-300 z-50 transition-all duration-100 w-0"></div>
+
+  <!-- Floating Text Selection Quote & Share Toolbar -->
+  <div
+    id="highlight-toolbar"
+    class="hidden fixed z-50 bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] shadow-2xl rounded-full px-3 py-1.5 items-center gap-2 text-xs font-sans animate-fadeIn backdrop-blur-md"
+  >
+    <button id="quote-copy-btn" class="px-2.5 py-1 rounded-full hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] flex items-center gap-1.5 transition">
+      <span class="font-serif font-bold">"</span> <span id="quote-btn-text">Copy Quote</span>
+    </button>
+    <span class="text-[var(--border-subtle)]">|</span>
+    <button id="quote-search-btn" class="px-2.5 py-1 rounded-full hover:bg-[var(--accent-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] flex items-center gap-1.5 transition">
+      <span>Search</span>
+    </button>
+  </div>
+
+  <article id="main-article" class="max-w-4xl mx-auto transition-all duration-300">
+    <!-- Top Article Header -->
+    <header class="mb-10 pb-8 border-b border-[var(--border-subtle)]">
+      <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
+        <div class="flex items-center gap-2.5 text-xs font-semibold tracking-wider uppercase text-[var(--accent-primary)] font-sans">
+          <span>{type === 'research' ? 'Philosophy Research' : 'Thought Stream'}</span>
+          {category && (
+            <>
+              <span>•</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-[var(--tag-bg)] text-[var(--accent-primary)] border border-[var(--tag-border)] font-medium">
+                {category}
+              </span>
+            </>
+          )}
+        </div>
+
+        <!-- Academic Actions (Cite & Share) -->
+        <div class="flex items-center gap-2 text-xs font-sans">
+          <button
+            id="cite-modal-trigger"
+            class="px-3 py-1.5 rounded-lg bg-[var(--bg-surface)] hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition flex items-center gap-1.5"
+            title="Cite this paper in BibTeX, APA, Chicago, MLA"
+          >
+            <span>Cite Paper</span>
+          </button>
+
+          <button
+            id="copy-link-btn"
+            class="px-3 py-1.5 rounded-lg bg-[var(--bg-surface)] hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition flex items-center gap-1.5"
+            title="Copy URL to clipboard"
+          >
+            <span id="copy-link-label">Copy Link</span>
+          </button>
+        </div>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[var(--text-primary)] leading-[1.2] mb-5 tracking-tight">
+        {title}
+      </h1>
+
+      <p class="text-lg sm:text-xl text-[var(--text-secondary)] font-sans leading-relaxed mb-6">
+        {description}
+      </p>
+
+      <!-- Metadata Bar (Author, Date, Reading Time, Word Count) -->
+      <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-[var(--text-muted)] font-sans pt-4 border-t border-[var(--border-subtle)]">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-[var(--tag-bg)] text-[var(--accent-primary)] flex items-center justify-center font-bold font-serif text-base border border-[var(--tag-border)]">
+            {author.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <div class="font-medium text-[var(--text-primary)] text-sm">{author}</div>
+            <div class="flex items-center gap-2">
+              <time datetime={isoDate}>{formattedDate}</time>
+              {updatedDate && (
+                <span>(Updated: {new Date(updatedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })})</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 text-[11px]">
+          <span id="read-stats" class="px-2.5 py-1 rounded-md bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+            Calculating reading stats...
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Reading Comfort Control Bar (Sticky floating dock) -->
+    <div id="comfort-toolbar" class="mb-8 p-3 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs font-sans">
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--text-muted)] font-medium">Typography:</span>
+        <div class="flex rounded-lg bg-[var(--bg-canvas)] p-0.5 border border-[var(--border-subtle)]">
+          <button data-font="serif" class="font-switch-btn px-2.5 py-1 rounded-md text-[var(--accent-primary)] font-semibold transition">Serif</button>
+          <button data-font="sans" class="font-switch-btn px-2.5 py-1 rounded-md text-[var(--text-muted)] transition">Sans</button>
+          <button data-font="mono" class="font-switch-btn px-2.5 py-1 rounded-md text-[var(--text-muted)] transition">Mono</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="text-[var(--text-muted)] font-medium">Size:</span>
+        <div class="flex rounded-lg bg-[var(--bg-canvas)] p-0.5 border border-[var(--border-subtle)]">
+          <button data-size="sm" class="size-switch-btn px-2 py-1 rounded-md text-[var(--text-muted)] transition">A-</button>
+          <button data-size="base" class="size-switch-btn px-2 py-1 rounded-md text-[var(--accent-primary)] font-semibold transition">A</button>
+          <button data-size="lg" class="size-switch-btn px-2 py-1 rounded-md text-[var(--text-muted)] transition">A+</button>
+          <button data-size="xl" class="size-switch-btn px-2 py-1 rounded-md text-[var(--text-muted)] transition">A++</button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          id="focus-mode-btn"
+          class="px-3 py-1 rounded-lg bg-[var(--bg-canvas)] hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] border border-[var(--border-subtle)] transition flex items-center gap-1.5"
+          title="Toggle Distraction-Free Focus Mode"
+        >
+          <span id="focus-btn-text">Focus Mode</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Article Body & Table of Contents Sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      {headings.length > 0 && (
+        <aside id="toc-sidebar" class="lg:col-span-1 lg:order-2 transition-opacity duration-300">
+          <div class="sticky top-24 p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm">
+            <div class="flex items-center justify-between mb-3 border-b border-[var(--border-subtle)] pb-2">
+              <h3 class="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)] font-sans">
+                Contents
+              </h3>
+              <span class="text-[10px] text-[var(--accent-primary)] font-mono">{headings.length} sections</span>
+            </div>
+            <nav id="toc-nav" class="space-y-1.5 text-xs font-sans max-h-[70vh] overflow-y-auto">
+              {headings.map(heading => (
+                <a
+                  href={`#${heading.slug}`}
+                  data-toc-slug={heading.slug}
+                  class={`toc-link block text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition truncate py-0.5 ${
+                    heading.depth === 3 ? 'pl-3 text-[11px]' : 'font-medium'
+                  }`}
+                >
+                  {heading.text}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+      )}
+
+      <!-- Primary Content Render Slot with Pagefind Body Tag -->
+      <div
+        id="article-content"
+        data-pagefind-body
+        class={`prose max-w-none ${headings.length > 0 ? 'lg:col-span-3 lg:order-1' : 'lg:col-span-4'}`}
+      >
+        <slot />
+      </div>
+    </div>
+
+    <!-- Article Footer Tags & Author Note -->
+    <footer class="mt-16 pt-8 border-t border-[var(--border-subtle)]">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <div class="flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <a
+              href={`/topics/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+              class="px-3 py-1 text-xs rounded-full bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:border-[var(--border-accent)] transition border border-[var(--border-subtle)] font-sans"
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+
+        <button
+          id="scroll-to-top-btn"
+          class="px-3 py-1.5 rounded-lg text-xs bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-[var(--border-subtle)] transition font-sans"
+        >
+          ↑ Back to Top
+        </button>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-start gap-4 font-sans text-xs">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-gray-950 flex items-center justify-center font-display font-black text-sm flex-shrink-0">
+          Φ
+        </div>
+        <div>
+          <div class="font-serif font-bold text-sm text-[var(--text-primary)] mb-1">funtohard / episteme</div>
+          <p class="text-[var(--text-secondary)] leading-relaxed">
+            Published in the open research repository. For questions, critiques, or formal logic revisions, contact the author or explore related essays in the topics index.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-sm font-sans pt-6">
+        <a href={type === 'research' ? '/research' : '/thoughts'} class="text-[var(--accent-primary)] hover:underline flex items-center gap-1.5 font-medium">
+          ← Back to {type === 'research' ? 'Research Index' : 'Thoughts Stream'}
+        </a>
+      </div>
+    </footer>
+  </article>
+
+  <!-- Academic Citation Modal -->
+  <div id="cite-modal" class="hidden fixed inset-0 z-50 overflow-y-auto p-4 sm:p-6 md:p-16 bg-black/75 backdrop-blur-md items-center justify-center">
+    <div class="relative w-full max-w-xl bg-[var(--bg-surface)] rounded-2xl shadow-2xl border border-[var(--border-subtle)] p-6 font-sans text-xs">
+      <div class="flex items-center justify-between mb-4 border-b border-[var(--border-subtle)] pb-3">
+        <div class="flex items-center gap-2">
+          <h3 class="font-serif font-bold text-base text-[var(--text-primary)]">Cite this Publication</h3>
+        </div>
+        <button id="close-cite-modal" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-sm font-mono">✕</button>
+      </div>
+
+      <!-- Format Tabs -->
+      <div class="flex gap-2 mb-3">
+        <button data-cite-tab="bibtex" class="cite-tab-btn px-3 py-1.5 rounded-lg bg-[var(--accent-subtle)] text-[var(--accent-primary)] font-semibold transition">BibTeX</button>
+        <button data-cite-tab="apa" class="cite-tab-btn px-3 py-1.5 rounded-lg bg-[var(--bg-canvas)] text-[var(--text-muted)] transition">APA 7th</button>
+        <button data-cite-tab="chicago" class="cite-tab-btn px-3 py-1.5 rounded-lg bg-[var(--bg-canvas)] text-[var(--text-muted)] transition">Chicago</button>
+        <button data-cite-tab="mla" class="cite-tab-btn px-3 py-1.5 rounded-lg bg-[var(--bg-canvas)] text-[var(--text-muted)] transition">MLA 9th</button>
+      </div>
+
+      <!-- Citation Code Display Area -->
+      <div class="relative">
+        <pre id="citation-box" class="p-3.5 rounded-xl bg-[var(--bg-canvas)] border border-[var(--border-subtle)] text-[var(--text-primary)] font-mono text-[11px] overflow-x-auto whitespace-pre-wrap leading-relaxed"></pre>
+        <button
+          id="copy-citation-btn"
+          class="absolute top-2.5 right-2.5 px-3 py-1 rounded-md bg-[var(--accent-primary)] text-gray-950 font-bold hover:brightness-110 transition shadow-sm"
+        >
+          Copy
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ title, author, formattedDate, currentYear, isoDate }}>
+    // Dynamic Reading Time & Word Count Calculation
+    const content = document.getElementById('article-content');
+    const readStats = document.getElementById('read-stats');
+    if (content && readStats) {
+      const text = content.innerText || '';
+      const words = text.trim().split(/\s+/).filter(Boolean).length;
+      const readingMinutes = Math.max(1, Math.ceil(words / 200));
+      readStats.innerText = `${readingMinutes} min read • ${words.toLocaleString()} words`;
+    }
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const progressBar = document.getElementById('progress-bar');
+      if (progressBar) {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      }
+    });
+
+    // Active Scrollspy for Table of Contents
+    const headings = document.querySelectorAll('#article-content h2, #article-content h3');
+    const tocLinks = document.querySelectorAll('.toc-link');
+    window.addEventListener('scroll', () => {
+      let currentId = '';
+      headings.forEach((heading) => {
+        const top = heading.getBoundingClientRect().top;
+        if (top <= 120) {
+          currentId = heading.id;
+        }
+      });
+      tocLinks.forEach((link) => {
+        if (link.dataset.tocSlug === currentId) {
+          link.classList.add('text-[var(--accent-primary)]', 'font-bold');
+        } else {
+          link.classList.remove('text-[var(--accent-primary)]', 'font-bold');
+        }
+      });
+    });
+
+    // Reading Comfort Suite: Font Switcher
+    const fontBtns = document.querySelectorAll('.font-switch-btn');
+    const applyReadingFont = (font) => {
+      fontBtns.forEach((b) => {
+        const btnFont = b.dataset.font;
+        if (btnFont === font) {
+          b.classList.add('text-[var(--accent-primary)]', 'font-semibold');
+          b.classList.remove('text-[var(--text-muted)]');
+        } else {
+          b.classList.remove('text-[var(--accent-primary)]', 'font-semibold');
+          b.classList.add('text-[var(--text-muted)]');
+        }
+      });
+      if (content) {
+        content.setAttribute('data-font', font);
+        content.classList.remove('font-serif', 'font-sans', 'font-mono');
+        content.classList.add(`font-${font}`);
+        const fontFamily = font === 'sans' 
+          ? "'Inter', system-ui, -apple-system, sans-serif" 
+          : font === 'mono' 
+          ? "'JetBrains Mono', monospace" 
+          : "'Newsreader', Georgia, serif";
+        content.style.fontFamily = fontFamily;
+        content.querySelectorAll('p, li, blockquote').forEach((el) => {
+          el.style.fontFamily = fontFamily;
+        });
+      }
+      localStorage.setItem('reading-font', font);
+    };
+
+    fontBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const font = btn.dataset.font || 'serif';
+        applyReadingFont(font);
+      });
+    });
+
+    const savedFont = localStorage.getItem('reading-font') || 'serif';
+    applyReadingFont(savedFont);
+
+    // Reading Comfort Suite: Font Size Adjuster
+    const sizeBtns = document.querySelectorAll('.size-switch-btn');
+    const sizeMap = {
+      sm: '1rem',
+      base: '1.125rem',
+      lg: '1.25rem',
+      xl: '1.375rem',
+    };
+    const applyReadingSize = (size) => {
+      sizeBtns.forEach((b) => {
+        const btnSize = b.dataset.size;
+        if (btnSize === size) {
+          b.classList.add('text-[var(--accent-primary)]', 'font-semibold');
+          b.classList.remove('text-[var(--text-muted)]');
+        } else {
+          b.classList.remove('text-[var(--accent-primary)]', 'font-semibold');
+          b.classList.add('text-[var(--text-muted)]');
+        }
+      });
+      if (content && sizeMap[size]) {
+        content.style.fontSize = sizeMap[size];
+      }
+      localStorage.setItem('reading-size', size);
+    };
+
+    sizeBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const size = btn.dataset.size || 'base';
+        applyReadingSize(size);
+      });
+    });
+
+    const savedSize = localStorage.getItem('reading-size') || 'base';
+    applyReadingSize(savedSize);
+
+    // Focus Mode Toggle
+    const focusBtn = document.getElementById('focus-mode-btn');
+    const focusBtnText = document.getElementById('focus-btn-text');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const tocSidebar = document.getElementById('toc-sidebar');
+    let isFocus = false;
+    if (focusBtn) {
+      focusBtn.addEventListener('click', () => {
+        isFocus = !isFocus;
+        if (header) header.style.opacity = isFocus ? '0.15' : '1';
+        if (footer) footer.style.opacity = isFocus ? '0.15' : '1';
+        if (tocSidebar) tocSidebar.style.opacity = isFocus ? '0.2' : '1';
+        focusBtn.classList.toggle('bg-[var(--accent-subtle)]', isFocus);
+        if (focusBtnText) focusBtnText.innerText = isFocus ? 'Exit Focus' : 'Focus Mode';
+      });
+    }
+
+    // Floating Text Selection Quote & Share Toolbar
+    const toolbar = document.getElementById('highlight-toolbar');
+    const quoteBtn = document.getElementById('quote-copy-btn');
+    const quoteBtnText = document.getElementById('quote-btn-text');
+    const searchBtn = document.getElementById('quote-search-btn');
+    let selectedText = '';
+
+    document.addEventListener('selectionchange', () => {
+      const selection = window.getSelection();
+      const text = selection ? selection.toString().trim() : '';
+      if (text && text.length > 3 && toolbar) {
+        selectedText = text;
+        const range = selection.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        toolbar.style.top = `${rect.top + window.scrollY - 44}px`;
+        toolbar.style.left = `${Math.max(10, rect.left + rect.width / 2 - 80)}px`;
+        toolbar.classList.remove('hidden');
+        toolbar.classList.add('flex');
+      } else if (toolbar) {
+        toolbar.classList.add('hidden');
+        toolbar.classList.remove('flex');
+      }
+    });
+
+    if (quoteBtn && quoteBtnText) {
+      quoteBtn.addEventListener('click', () => {
+        const quoteMarkdown = `> "${selectedText}"\n>\n> - ${author}, *${title}* (${window.location.href})`;
+        navigator.clipboard.writeText(quoteMarkdown);
+        quoteBtnText.innerText = 'Copied!';
+        setTimeout(() => { quoteBtnText.innerText = 'Copy Quote'; }, 1500);
+      });
+    }
+
+    if (searchBtn) {
+      searchBtn.addEventListener('click', () => {
+        const modal = document.getElementById('search-modal');
+        const input = document.getElementById('search-modal-input');
+        if (modal && input) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          input.value = selectedText;
+          input.dispatchEvent(new Event('input'));
+          input.focus();
+        }
+      });
+    }
+
+    // Copy Link Notification
+    const copyLinkBtn = document.getElementById('copy-link-btn');
+    const copyLinkLabel = document.getElementById('copy-link-label');
+    if (copyLinkBtn && copyLinkLabel) {
+      copyLinkBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href);
+        copyLinkLabel.innerText = '✓ Copied!';
+        setTimeout(() => { copyLinkLabel.innerText = 'Copy Link'; }, 2000);
+      });
+    }
+
+    // Scroll to Top
+    const toTopBtn = document.getElementById('scroll-to-top-btn');
+    if (toTopBtn) {
+      toTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // Citation Generator Modal Logic
+    const citeTrigger = document.getElementById('cite-modal-trigger');
+    const citeModal = document.getElementById('cite-modal');
+    const closeCiteBtn = document.getElementById('close-cite-modal');
+    const citationBox = document.getElementById('citation-box');
+    const copyCiteBtn = document.getElementById('copy-citation-btn');
+    const citeTabs = document.querySelectorAll('.cite-tab-btn');
+
+    const slug = window.location.pathname.split('/').filter(Boolean).pop() || 'paper';
+    const cleanUrl = window.location.href;
+
+    const citations = {
+      bibtex: `@article{${author.toLowerCase()}_${currentYear}_${slug.replace(/-/g, '_')},
+  title   = {${title}},
+  author  = {${author}},
+  year    = {${currentYear}},
+  journal = {funtohard Philosophy Journal},
+  url     = {${cleanUrl}}
+}`,
+      apa: `${author}. (${currentYear}). ${title}. funtohard Philosophy Journal. ${cleanUrl}`,
+      chicago: `${author}. "${title}." funtohard Philosophy Journal (${currentYear}). ${cleanUrl}.`,
+      mla: `${author}. "${title}." funtohard Philosophy Journal, ${currentYear}, ${cleanUrl}.`,
+    };
+
+    let activeTab = 'bibtex';
+    if (citationBox) citationBox.innerText = citations[activeTab];
+
+    if (citeTrigger && citeModal) {
+      citeTrigger.addEventListener('click', () => {
+        citeModal.classList.remove('hidden');
+        citeModal.classList.add('flex');
+      });
+    }
+    if (closeCiteBtn && citeModal) {
+      closeCiteBtn.addEventListener('click', () => {
+        citeModal.classList.add('hidden');
+        citeModal.classList.remove('flex');
+      });
+    }
+    if (citeModal) {
+      citeModal.addEventListener('click', (e) => {
+        if (e.target === citeModal) {
+          citeModal.classList.add('hidden');
+          citeModal.classList.remove('flex');
+        }
+      });
+    }
+
+    citeTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        citeTabs.forEach(t => t.classList.remove('bg-[var(--accent-subtle)]', 'text-[var(--accent-primary)]', 'font-semibold'));
+        tab.classList.add('bg-[var(--accent-subtle)]', 'text-[var(--accent-primary)]', 'font-semibold');
+        activeTab = tab.dataset.citeTab || 'bibtex';
+        if (citationBox && citations[activeTab]) {
+          citationBox.innerText = citations[activeTab];
+        }
+      });
+    });
+
+    if (copyCiteBtn && citationBox) {
+      copyCiteBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(citationBox.innerText);
+        copyCiteBtn.innerText = 'Copied!';
+        setTimeout(() => { copyCiteBtn.innerText = 'Copy'; }, 2000);
+      });
+    }
+  </script>
+</BaseLayout>

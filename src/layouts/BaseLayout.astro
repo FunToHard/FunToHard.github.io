@@ -1,0 +1,359 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchModal from '../components/SearchModal.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishDate?: Date;
+  author?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = "Philosophy Research, Epistemology, Symbolic Logic, and Thought Sharing by funtohard.",
+  image = "/favicon.svg",
+  type = "website",
+  publishDate,
+  author = "funtohard",
+  canonicalUrl = Astro.url.href,
+} = Astro.props;
+
+const siteTitle = title.includes("funtohard") ? title : `${title} | funtohard philosophy`;
+const absoluteImageUrl = new URL(image, Astro.site).href;
+
+// JSON-LD Structured Data
+const jsonLd = type === 'article' ? {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": title,
+  "description": description,
+  "image": absoluteImageUrl,
+  "datePublished": publishDate?.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "url": "https://funtohard.github.io"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "funtohard",
+    "url": "https://funtohard.github.io"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  }
+} : {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "funtohard philosophy",
+  "url": "https://funtohard.github.io",
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "funtohard"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="obsidian" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Primary Meta Tags -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImageUrl} />
+    <meta property="og:site_name" content="funtohard philosophy" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={siteTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={absoluteImageUrl} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+    <!-- KaTeX CSS for rendered math & symbolic logic -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous" />
+
+    <!-- Google Fonts: Newsreader (Editorial Serif), Cinzel (Classical Display), Inter (UI Sans), JetBrains Mono (Logic & Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet" />
+
+    <!-- Inline script for zero-FOUC 3-Theme Management -->
+    <script is:inline>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        let theme = 'obsidian';
+        if (savedTheme === 'parchment' || savedTheme === 'oxford' || savedTheme === 'obsidian') {
+          theme = savedTheme;
+        } else if (savedTheme === 'light') {
+          theme = 'parchment';
+        } else if (savedTheme === 'dark') {
+          theme = 'obsidian';
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          theme = 'parchment';
+        }
+        
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'parchment') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans antialiased selection:bg-amber-500/20 selection:text-amber-500 min-h-screen flex flex-col transition-colors duration-200">
+    <Header />
+    <main class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <slot />
+    </main>
+    <Footer />
+    <SearchModal />
+
+    <style is:global>
+      /* CSS Theme Design Tokens */
+      :root, [data-theme="obsidian"] {
+        --bg-canvas: #090a0f;
+        --bg-surface: #12141c;
+        --bg-surface-elevated: #191c27;
+        --bg-card: #12141c;
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-accent: rgba(245, 158, 11, 0.28);
+        --text-primary: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --text-muted: #6b7280;
+        --accent-primary: #f59e0b;
+        --accent-hover: #fbbf24;
+        --accent-subtle: rgba(245, 158, 11, 0.12);
+        --accent-glow: 0 0 25px -5px rgba(245, 158, 11, 0.2);
+        --tag-bg: rgba(245, 158, 11, 0.08);
+        --tag-border: rgba(245, 158, 11, 0.2);
+      }
+
+      [data-theme="parchment"] {
+        --bg-canvas: #faf7f2;
+        --bg-surface: #f4ede2;
+        --bg-surface-elevated: #eadecd;
+        --bg-card: #ffffff;
+        --border-subtle: rgba(40, 30, 20, 0.12);
+        --border-accent: rgba(180, 83, 9, 0.35);
+        --text-primary: #1c1917;
+        --text-secondary: #44403c;
+        --text-muted: #78716c;
+        --accent-primary: #b45309;
+        --accent-hover: #d97706;
+        --accent-subtle: rgba(180, 83, 9, 0.1);
+        --accent-glow: 0 0 25px -5px rgba(180, 83, 9, 0.15);
+        --tag-bg: rgba(180, 83, 9, 0.06);
+        --tag-border: rgba(180, 83, 9, 0.2);
+      }
+
+      [data-theme="oxford"] {
+        --bg-canvas: #060b15;
+        --bg-surface: #0e172b;
+        --bg-surface-elevated: #15223e;
+        --bg-card: #0e172b;
+        --border-subtle: rgba(56, 189, 248, 0.14);
+        --border-accent: rgba(56, 189, 248, 0.35);
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --accent-primary: #38bdf8;
+        --accent-hover: #7dd3fc;
+        --accent-subtle: rgba(56, 189, 248, 0.12);
+        --accent-glow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+        --tag-bg: rgba(56, 189, 248, 0.08);
+        --tag-border: rgba(56, 189, 248, 0.22);
+      }
+
+      /* Article Content Typography & Text Justification */
+      .prose {
+        font-family: var(--article-font-family, 'Newsreader', Georgia, serif);
+        font-size: 1.125rem;
+        line-height: 1.85;
+        color: var(--text-primary);
+      }
+
+      #article-content[data-font="serif"], .prose.font-serif {
+        --article-font-family: 'Newsreader', Georgia, serif;
+        font-family: 'Newsreader', Georgia, serif !important;
+      }
+      #article-content[data-font="sans"], .prose.font-sans {
+        --article-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      }
+      #article-content[data-font="mono"], .prose.font-mono {
+        --article-font-family: 'JetBrains Mono', monospace;
+        font-family: 'JetBrains Mono', monospace !important;
+      }
+
+      #article-content[data-font="serif"] p, .prose.font-serif p {
+        font-family: 'Newsreader', Georgia, serif !important;
+      }
+      #article-content[data-font="sans"] p, .prose.font-sans p {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+      }
+      #article-content[data-font="mono"] p, .prose.font-mono p {
+        font-family: 'JetBrains Mono', monospace !important;
+      }
+
+      .prose p {
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        margin-bottom: 1.35rem;
+      }
+      
+      .prose h1, .prose h2, .prose h3, .prose h4 {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-top: 2.25rem;
+        margin-bottom: 1rem;
+        text-align: left;
+        color: var(--text-primary);
+      }
+
+      .prose h2 {
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 0.4rem;
+      }
+
+      .prose blockquote {
+        font-family: 'Newsreader', serif;
+        font-style: italic;
+        border-left: 3px solid var(--accent-primary);
+        padding: 0.75rem 1.25rem;
+        margin: 1.5rem 0;
+        background: var(--accent-subtle);
+        border-radius: 0 0.5rem 0.5rem 0;
+      }
+
+      .prose code:not(pre code) {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.88em;
+        padding: 0.15rem 0.4rem;
+        border-radius: 0.35rem;
+        background-color: var(--accent-subtle);
+        color: var(--accent-primary);
+        border: 1px solid var(--border-subtle);
+      }
+      
+      /* Drop cap option for article opening paragraphs */
+      .drop-cap::first-letter {
+        font-family: 'Cinzel', 'Newsreader', serif;
+        float: left;
+        font-size: 3.5rem;
+        line-height: 0.8;
+        padding-top: 4px;
+        padding-right: 8px;
+        padding-bottom: 2px;
+        color: var(--accent-primary);
+        font-weight: bold;
+      }
+
+      /* Right-aligned floating image container with caption directly beneath */
+      .prose figure.img-wrap-right,
+      .prose figure,
+      .prose img.img-wrap-right,
+      .prose p img {
+        float: right;
+        margin-left: 1.75rem;
+        margin-bottom: 1.25rem;
+        margin-top: 0.5rem;
+        max-width: 44%;
+        clear: right;
+      }
+
+      .prose figure img,
+      .prose img.img-wrap-right,
+      .prose p img {
+        width: 100%;
+        height: auto;
+        border-radius: 0.75rem;
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        margin-bottom: 0.5rem;
+      }
+
+      .prose figcaption {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        color: var(--text-muted);
+        text-align: center;
+        margin-top: 0.35rem;
+        font-style: italic;
+      }
+
+      @media (max-width: 640px) {
+        .prose figure.img-wrap-right,
+        .prose figure,
+        .prose img.img-wrap-right,
+        .prose p img {
+          float: none;
+          margin-left: 0;
+          max-width: 100%;
+          width: 100%;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      /* KaTeX Formula Container Styling */
+      .katex-display {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0.9rem 1.2rem;
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: 0.75rem;
+        margin: 1.75rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Custom Subtle Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-canvas);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-subtle);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
+      }
+    </style>
+  </body>
+</html>

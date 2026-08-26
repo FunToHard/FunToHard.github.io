@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allThoughts = await getCollection('thoughts', ({ data }) => !data.draft);
+const sortedThoughts = allThoughts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Thoughts Stream & Short Philosophical Reflections">
+  <div class="mb-10 pb-6 border-b border-[var(--border-subtle)]">
+    <div class="flex items-center gap-2 text-xs font-sans font-semibold uppercase tracking-wider text-[var(--accent-primary)] mb-2">
+      <span>Philosophical Stream</span> • <span>{sortedThoughts.length} Reflections</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-serif font-bold text-[var(--text-primary)] mb-3">
+      Thoughts Stream
+    </h1>
+    <p class="text-[var(--text-secondary)] font-sans leading-relaxed max-w-2xl text-base">
+      Short reflections, micro-essays, commentary on computation and ontology, and conceptual notes.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {sortedThoughts.map((item) => (
+      <ArticleCard
+        title={item.data.title}
+        description={item.data.description}
+        pubDate={item.data.pubDate}
+        slug={item.slug}
+        tags={item.data.tags}
+        type="thoughts"
+      />
+    ))}
+  </div>
+</BaseLayout>

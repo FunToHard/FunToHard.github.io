@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allResearch = await getCollection('research', ({ data }) => !data.draft);
+const allThoughts = await getCollection('thoughts', ({ data }) => !data.draft);
+
+const sortedResearch = allResearch.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedThoughts = allThoughts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featuredResearch = sortedResearch.filter(r => r.data.featured);
+
+// Topic tag frequencies
+const tagMap = new Map<string, number>();
+[...allResearch, ...allThoughts].forEach((item) => {
+  item.data.tags.forEach((tag) => {
+    const formatted = tag.trim();
+    tagMap.set(formatted, (tagMap.get(formatted) || 0) + 1);
+  });
+});
+const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Philosophy Research, Epistemology & Formal Dialectics">
+  <!-- Hero Masthead Section -->
+  <section class="pt-8 pb-12 text-center border-b border-[var(--border-subtle)] mb-12">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-sans font-medium bg-[var(--tag-bg)] text-[var(--accent-primary)] border border-[var(--tag-border)] mb-6 animate-fadeIn">
+      <span class="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse"></span>
+      <span>Epistemology • Symbolic Logic • Philosophy of Mind • Ethics</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-[var(--text-primary)] tracking-tight leading-[1.12] max-w-3xl mx-auto mb-6">
+      Philosophical Inquiries &amp; Formal Dialectics
+    </h1>
+
+    <p class="text-lg sm:text-xl font-sans text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-8">
+      A digital research journal dedicated to formal modal calculus, epistemological paradoxes, synthetic cognitive architectures, and classical philosophy.
+    </p>
+
+    <!-- Quick Navigation Actions -->
+    <div class="flex flex-wrap justify-center gap-3.5 font-sans text-xs sm:text-sm">
+      <a
+        href="/research"
+        class="px-6 py-3 rounded-xl bg-[var(--accent-primary)] text-gray-950 font-bold hover:brightness-110 transition shadow-lg shadow-amber-500/15 flex items-center gap-2"
+      >
+        <span>Explore Research Papers</span>
+      </a>
+      <a
+        href="/thoughts"
+        class="px-6 py-3 rounded-xl bg-[var(--bg-surface)] text-[var(--text-primary)] font-semibold hover:bg-[var(--bg-surface-elevated)] transition border border-[var(--border-subtle)] hover:border-[var(--border-accent)] flex items-center gap-2"
+      >
+        <span>Read Thoughts Stream</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Signature Interactive Feature: The Epistemic Dialectic Oracle -->
+  <section class="mb-16">
+    <div class="p-6 sm:p-8 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-xl relative overflow-hidden">
+      <!-- Background Ambient Geometric Accent -->
+      <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-[var(--accent-subtle)] opacity-40 blur-3xl pointer-events-none"></div>
+
+      <div class="flex items-center justify-between gap-4 mb-6 flex-wrap border-b border-[var(--border-subtle)] pb-4">
+        <div class="flex items-center gap-2.5">
+          <div>
+            <h2 class="text-base sm:text-lg font-serif font-bold text-[var(--text-primary)]">
+              The Epistemic Dialectic Oracle
+            </h2>
+            <p class="text-xs font-sans text-[var(--text-muted)]">
+              Interactive philosophical axioms, thought experiments &amp; paradoxes
+            </p>
+          </div>
+        </div>
+
+        <button
+          id="oracle-cycle-btn"
+          class="px-3.5 py-1.5 rounded-xl bg-[var(--bg-canvas)] hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition font-sans text-xs flex items-center gap-2 group shadow-sm"
+        >
+          <span class="font-mono text-[var(--accent-primary)] font-bold">↻</span>
+          <span>Ponder Next Concept</span>
+        </button>
+      </div>
+
+      <!-- Active Concept Card -->
+      <div id="oracle-card" class="space-y-4 font-sans transition-all duration-300">
+        <div class="flex items-center gap-2">
+          <span id="oracle-field-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[var(--tag-bg)] text-[var(--accent-primary)] border border-[var(--tag-border)]">
+            Epistemology
+          </span>
+          <span id="oracle-author" class="text-xs text-[var(--text-muted)] italic font-serif">
+            William James / Ludwig Wittgenstein
+          </span>
+        </div>
+
+        <h3 id="oracle-title" class="text-xl sm:text-2xl font-serif font-bold text-[var(--text-primary)]">
+          The Infinite Regress of Definition
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div class="p-4 rounded-xl bg-[var(--bg-canvas)] border border-[var(--border-subtle)]">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-[var(--accent-primary)] mb-1">
+              Thesis / Structural Logic
+            </div>
+            <p id="oracle-thesis" class="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Every word in a natural language is defined using other words, demanding an infinite chain of subsequent definitions unless grounded in semantic primitives.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-[var(--bg-canvas)] border border-[var(--border-subtle)]">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-rose-500 dark:text-rose-400 mb-1">
+              Antithesis / Epistemic Paradox
+            </div>
+            <p id="oracle-antithesis" class="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Excessive formal excavation causes meaning to dissolve (semantic satiation); practical communication succeeds by intentionally arresting definition at the boundary of behavioral utility.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center pt-2">
+          <a
+            id="oracle-link"
+            href="/research/the-horizon-of-meaning"
+            class="text-xs font-semibold text-[var(--accent-primary)] hover:underline flex items-center gap-1"
+          >
+            Explore Related Research Essay →
+          </a>
+          <span class="text-[10px] font-mono text-[var(--text-muted)]" id="oracle-counter">
+            Concept 1 of 4
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Repository Metrics Bar -->
+  <section class="mb-16 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center font-sans">
+    <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm">
+      <div class="text-2xl font-serif font-bold text-[var(--accent-primary)]">
+        {allResearch.length + allThoughts.length}
+      </div>
+      <div class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">
+        Total Publications
+      </div>
+    </div>
+
+    <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm">
+      <div class="text-2xl font-serif font-bold text-[var(--accent-primary)]">
+        4
+      </div>
+      <div class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">
+        Core Disciplines
+      </div>
+    </div>
+
+    <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm">
+      <div class="text-2xl font-serif font-bold text-[var(--accent-primary)]">
+        KaTeX
+      </div>
+      <div class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">
+        Zero-JS Static Math
+      </div>
+    </div>
+
+    <div class="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-sm">
+      <div class="text-2xl font-serif font-bold text-[var(--accent-primary)]">
+        3
+      </div>
+      <div class="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">
+        Curated Themes
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Curated Reading Pathways -->
+  <section class="mb-16">
+    <div class="mb-8">
+      <h2 class="text-2xl font-serif font-bold text-[var(--text-primary)]">
+        Guided Reading Curriculums
+      </h2>
+      <p class="text-xs sm:text-sm font-sans text-[var(--text-muted)]">
+        Structured intellectual journeys through epistemological limits, machine minds, and historical inquiry
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <a
+        href="/research/the-horizon-of-meaning"
+        class="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] hover:shadow-lg transition group block"
+      >
+        <div class="flex items-center gap-2 text-xs font-semibold text-[var(--accent-primary)] font-sans uppercase tracking-wider mb-2">
+          <span>01</span> • <span>Epistemology &amp; Semantics</span>
+        </div>
+        <h3 class="text-lg font-serif font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors mb-2">
+          The Horizon of Meaning
+        </h3>
+        <p class="text-xs font-sans text-[var(--text-secondary)] leading-relaxed">
+          How semantic observer effects and descriptive normalization challenge mathematical rigidity in language.
+        </p>
+      </a>
+
+      <a
+        href="/thoughts/epistemology-of-the-machine"
+        class="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] hover:shadow-lg transition group block"
+      >
+        <div class="flex items-center gap-2 text-xs font-semibold text-[var(--accent-primary)] font-sans uppercase tracking-wider mb-2">
+          <span>02</span> • <span>Philosophy of Computation</span>
+        </div>
+        <h3 class="text-lg font-serif font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors mb-2">
+          The Epistemology of the Machine
+        </h3>
+        <p class="text-xs font-sans text-[var(--text-secondary)] leading-relaxed">
+          Why Undefined Behavior represents an intentional ontological void rather than an unknown physical state.
+        </p>
+      </a>
+
+      <a
+        href="/research/philosophers-wives-fame-and-erasure"
+        class="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] hover:shadow-lg transition group block"
+      >
+        <div class="flex items-center gap-2 text-xs font-semibold text-[var(--accent-primary)] font-sans uppercase tracking-wider mb-2">
+          <span>03</span> • <span>Ethics &amp; Intellectual History</span>
+        </div>
+        <h3 class="text-lg font-serif font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors mb-2">
+          Philosophers' Wives: Fame and Erasure
+        </h3>
+        <p class="text-xs font-sans text-[var(--text-secondary)] leading-relaxed">
+          Psychological dynamics, vilification, and historical erasure of thinkers from Xanthippe to Harriet Taylor Mill.
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Research Section -->
+  {featuredResearch.length > 0 && (
+    <section class="mb-16">
+      <div class="flex items-center justify-between mb-8 border-b border-[var(--border-subtle)] pb-4">
+        <div>
+          <h2 class="text-2xl font-serif font-bold text-[var(--text-primary)]">Featured Research Papers</h2>
+          <p class="text-xs sm:text-sm font-sans text-[var(--text-muted)]">Formal philosophy publications and rigorous analytical investigations</p>
+        </div>
+        <a href="/research" class="text-xs font-sans font-semibold text-[var(--accent-primary)] hover:underline">
+          View All Papers →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {featuredResearch.map((item) => (
+          <ArticleCard
+            title={item.data.title}
+            description={item.data.description}
+            pubDate={item.data.pubDate}
+            slug={item.slug}
+            category={item.data.category}
+            tags={item.data.tags}
+            type="research"
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Recent Thoughts Section -->
+  <section class="mb-16">
+    <div class="flex items-center justify-between mb-8 border-b border-[var(--border-subtle)] pb-4">
+      <div>
+        <h2 class="text-2xl font-serif font-bold text-[var(--text-primary)]">Thoughts Stream</h2>
+        <p class="text-xs sm:text-sm font-sans text-[var(--text-muted)]">Short reflections, micro-essays, and conceptual notes</p>
+      </div>
+      <a href="/thoughts" class="text-xs font-sans font-semibold text-[var(--accent-primary)] hover:underline">
+        View All Thoughts →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {sortedThoughts.map((item) => (
+        <ArticleCard
+          title={item.data.title}
+          description={item.data.description}
+          pubDate={item.data.pubDate}
+          slug={item.slug}
+          tags={item.data.tags}
+          type="thoughts"
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Topic Taxonomy Cloud -->
+  <section class="p-8 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-center font-sans shadow-sm">
+    <div class="flex items-center justify-center gap-2 mb-2 text-xs font-bold uppercase tracking-wider text-[var(--accent-primary)]">
+      <span>Philosophical Taxonomy</span>
+    </div>
+    <h3 class="text-xl font-serif font-bold text-[var(--text-primary)] mb-2">Explore by Subject Matter</h3>
+    <p class="text-xs text-[var(--text-muted)] max-w-md mx-auto mb-6">
+      Browse publications through foundational fields of metaphysics, epistemology, formal logic, and ethical inquiry.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-2.5">
+      {sortedTags.map(([tag, count]) => (
+        <a
+          href={`/topics/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+          class="px-3.5 py-1.5 rounded-full text-xs font-medium bg-[var(--bg-canvas)] text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:border-[var(--border-accent)] transition border border-[var(--border-subtle)] shadow-sm flex items-center gap-1.5 group"
+        >
+          <span>#{tag}</span>
+          <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--tag-bg)] text-[var(--accent-primary)] font-semibold">
+            {count}
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <script>
+    // The Epistemic Dialectic Oracle Data & Interactivity
+    const oracleConcepts = [
+      {
+        field: "Epistemology",
+        author: "William James & Ludwig Wittgenstein",
+        title: "The Infinite Regress of Definition",
+        thesis: "Every word in a natural language is defined using other words, demanding an infinite chain of subsequent definitions unless grounded in semantic primitives.",
+        antithesis: "Excessive formal excavation causes meaning to dissolve (semantic satiation); practical communication succeeds by intentionally arresting definition at the boundary of behavioral utility.",
+        link: "/research/the-horizon-of-meaning",
+      },
+      {
+        field: "Semantics & Logic",
+        author: "Gottlob Frege & Ferdinand de Saussure",
+        title: "The Syntax-Normalization Conflict",
+        thesis: "Formal logical notation demands absolute structural determinism, where every symbol maps strictly to a rigorous mathematical referent.",
+        antithesis: "Living natural languages evolve via organic descriptive usage, rendering strict prescriptivist syntax inadequate to contain evolving semantic boundaries.",
+        link: "/research/the-horizon-of-meaning",
+      },
+      {
+        field: "Philosophy of Computation",
+        author: "Systems Architecture & ISO Standards",
+        title: "The Undefined vs. Unknown Paradox",
+        thesis: "Hardware state machines are 100% deterministic bare-metal circuits; no computer execution is physically 'unknown'.",
+        antithesis: "'Undefined Behavior' is not an epistemological statement about hardware, but an ontological nullification of the semantic contract, enabling aggressive compiler optimization.",
+        link: "/thoughts/epistemology-of-the-machine",
+      },
+      {
+        field: "Ethics & History",
+        author: "John Stuart Mill & Harriet Taylor Mill",
+        title: "The Epistemic Injustice of Erasure",
+        thesis: "The history of philosophy celebrates solitary heroic thinkers who author canonical frameworks.",
+        antithesis: "Victorian domestic erasure systematically credited male philosophers with collaborative co-authored masterpieces (On Liberty, Subjection of Women), distorting philosophical history.",
+        link: "/research/philosophers-wives-fame-and-erasure",
+      }
+    ];
+
+    let currentOracleIndex = 0;
+    const cycleBtn = document.getElementById('oracle-cycle-btn');
+    const fieldBadge = document.getElementById('oracle-field-badge');
+    const authorEl = document.getElementById('oracle-author');
+    const titleEl = document.getElementById('oracle-title');
+    const thesisEl = document.getElementById('oracle-thesis');
+    const antithesisEl = document.getElementById('oracle-antithesis');
+    const linkEl = document.getElementById('oracle-link') as HTMLAnchorElement;
+    const counterEl = document.getElementById('oracle-counter');
+    const oracleCard = document.getElementById('oracle-card');
+
+    if (cycleBtn && fieldBadge && authorEl && titleEl && thesisEl && antithesisEl && linkEl && counterEl && oracleCard) {
+      cycleBtn.addEventListener('click', () => {
+        currentOracleIndex = (currentOracleIndex + 1) % oracleConcepts.length;
+        const item = oracleConcepts[currentOracleIndex];
+
+        oracleCard.style.opacity = '0';
+        oracleCard.style.transform = 'translateY(4px)';
+
+        setTimeout(() => {
+          fieldBadge.innerText = item.field;
+          authorEl.innerText = item.author;
+          titleEl.innerText = item.title;
+          thesisEl.innerText = item.thesis;
+          antithesisEl.innerText = item.antithesis;
+          linkEl.href = item.link;
+          counterEl.innerText = `Concept ${currentOracleIndex + 1} of ${oracleConcepts.length}`;
+
+          oracleCard.style.opacity = '1';
+          oracleCard.style.transform = 'translateY(0)';
+        }, 150);
+      });
+    }
+  </script>
+</BaseLayout>
+

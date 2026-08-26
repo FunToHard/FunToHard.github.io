@@ -1,0 +1,242 @@
+---
+const navItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Research', path: '/research' },
+  { name: 'Thoughts', path: '/thoughts' },
+  { name: 'Topics', path: '/topics' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-md bg-[var(--bg-canvas)]/85 border-b border-[var(--border-subtle)] transition-colors">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/" class="group flex items-center gap-2.5 text-decoration-none">
+      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 text-gray-950 flex items-center justify-center font-display text-sm font-black shadow-sm group-hover:scale-105 transition-transform">
+        Φ
+      </span>
+      <div class="flex flex-col">
+        <span class="font-serif font-bold text-lg tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors leading-none">
+          funtohard
+        </span>
+        <span class="text-[10px] font-sans tracking-wider uppercase text-[var(--text-muted)] mt-0.5">
+          episteme &amp; dialectic
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium font-sans">
+      {navItems.map((item) => {
+        const isActive = item.path === '/' 
+          ? currentPath === '/' 
+          : currentPath.startsWith(item.path);
+        return (
+          <a
+            href={item.path}
+            class={`transition-colors py-1 relative ${
+              isActive
+                ? 'text-[var(--accent-primary)] font-semibold'
+                : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'
+            }`}
+          >
+            {item.name}
+            {isActive && (
+              <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--accent-primary)] rounded-full animate-fadeIn" />
+            )}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Header Actions (Search & 3-Theme Switcher & Mobile Menu) -->
+    <div class="flex items-center gap-2.5">
+      <!-- Search Trigger Button -->
+      <button
+        id="search-trigger-btn"
+        class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-sans bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-elevated)] transition border border-[var(--border-subtle)]"
+        aria-label="Open Command Palette and Search"
+      >
+        <svg class="w-3.5 h-3.5 text-[var(--text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <span class="hidden sm:inline">Search</span>
+        <kbd class="hidden sm:inline px-1.5 py-0.5 text-[10px] font-mono bg-[var(--bg-canvas)] text-[var(--text-muted)] rounded border border-[var(--border-subtle)]">⌘K</kbd>
+      </button>
+
+      <!-- 3-Theme Selector Dropdown Trigger -->
+      <div class="relative inline-block text-left">
+        <button
+          id="theme-menu-btn"
+          type="button"
+          class="h-9 px-2.5 rounded-lg flex items-center gap-1.5 text-[var(--text-secondary)] bg-[var(--bg-surface)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-surface-elevated)] transition border border-[var(--border-subtle)] text-xs font-sans"
+          aria-expanded="false"
+          aria-haspopup="true"
+          title="Switch Reading Theme"
+        >
+          <svg class="w-3.5 h-3.5 text-[var(--accent-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4 5 5 0 014-5h10a4 4 0 014 4v1a4 4 0 01-4 4H7z M12 3v9 M8 7l4-4 4 4" />
+          </svg>
+          <span id="theme-active-label" class="hidden sm:inline text-[11px] font-medium capitalize">Theme</span>
+        </button>
+
+        <!-- Theme Options Menu -->
+        <div
+          id="theme-dropdown"
+          class="hidden absolute right-0 mt-2 w-48 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-xl z-50 py-1.5 font-sans text-xs overflow-hidden"
+        >
+          <div class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)] border-b border-[var(--border-subtle)]">
+            Reading Themes
+          </div>
+          <button
+            data-set-theme="obsidian"
+            class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] transition"
+          >
+            <span class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#1e212d] border border-gray-600"></span>
+              <span>Obsidian Library</span>
+            </span>
+            <span class="theme-check hidden text-[var(--accent-primary)] font-bold" data-for="obsidian">✓</span>
+          </button>
+          <button
+            data-set-theme="parchment"
+            class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] transition"
+          >
+            <span class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#f4ede2] border border-amber-800/40"></span>
+              <span>Archival Parchment</span>
+            </span>
+            <span class="theme-check hidden text-[var(--accent-primary)] font-bold" data-for="parchment">✓</span>
+          </button>
+          <button
+            data-set-theme="oxford"
+            class="w-full text-left px-3 py-2 flex items-center justify-between hover:bg-[var(--accent-subtle)] text-[var(--text-primary)] transition"
+          >
+            <span class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#131e33] border border-sky-500/40"></span>
+              <span>Oxford Academy</span>
+            </span>
+            <span class="theme-check hidden text-[var(--accent-primary)] font-bold" data-for="oxford">✓</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden w-9 h-9 rounded-lg flex items-center justify-center text-[var(--text-secondary)] bg-[var(--bg-surface)] hover:text-[var(--text-primary)] transition border border-[var(--border-subtle)]"
+        aria-label="Toggle Navigation Menu"
+      >
+        <svg id="mobile-menu-icon-svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="hidden md:hidden px-4 pt-2 pb-4 border-b border-[var(--border-subtle)] bg-[var(--bg-canvas)] font-sans text-sm">
+    <nav class="flex flex-col space-y-2">
+      {navItems.map((item) => (
+        <a
+          href={item.path}
+          class={`px-3 py-2 rounded-lg transition ${
+            (item.path === '/' ? currentPath === '/' : currentPath.startsWith(item.path))
+              ? 'bg-[var(--accent-subtle)] text-[var(--accent-primary)] font-semibold'
+              : 'text-[var(--text-secondary)] hover:bg-[var(--bg-surface)]'
+          }`}
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Theme Switching Logic
+  const themeMenuBtn = document.getElementById('theme-menu-btn');
+  const themeDropdown = document.getElementById('theme-dropdown');
+  const themeActiveLabel = document.getElementById('theme-active-label');
+
+  const themeNames: Record<string, string> = {
+    obsidian: 'Obsidian',
+    parchment: 'Parchment',
+    oxford: 'Oxford',
+  };
+
+  const applyTheme = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'parchment') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+    localStorage.setItem('theme', theme);
+
+    if (themeActiveLabel && themeNames[theme]) {
+      themeActiveLabel.innerText = themeNames[theme];
+    }
+
+    // Update active checkmarks
+    document.querySelectorAll('.theme-check').forEach((el) => {
+      const targetTheme = (el as HTMLElement).dataset.for;
+      if (targetTheme === theme) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+
+    if (themeDropdown) themeDropdown.classList.add('hidden');
+  };
+
+  // Initialize UI checkmarks
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'obsidian';
+  applyTheme(currentTheme);
+
+  if (themeMenuBtn && themeDropdown) {
+    themeMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      themeDropdown.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('[data-set-theme]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const theme = (btn as HTMLElement).dataset.setTheme;
+        if (theme) applyTheme(theme);
+      });
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!themeDropdown.contains(e.target as Node) && e.target !== themeMenuBtn) {
+        themeDropdown.classList.add('hidden');
+      }
+    });
+  }
+
+  // Mobile Menu Toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+
+  if (mobileMenuBtn && mobileDrawer) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('hidden');
+    });
+  }
+
+  // Search Trigger
+  const searchBtn = document.getElementById('search-trigger-btn');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+      const searchModal = document.getElementById('search-modal');
+      if (searchModal) {
+        searchModal.classList.remove('hidden');
+        searchModal.classList.add('flex');
+        const searchInput = document.getElementById('search-modal-input') as HTMLInputElement;
+        if (searchInput) searchInput.focus();
+      }
+    });
+  }
+</script>

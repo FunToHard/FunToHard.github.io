@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allResearch = await getCollection('research', ({ data }) => !data.draft);
+  const allThoughts = await getCollection('thoughts', ({ data }) => !data.draft);
+
+  const allTags = new Set<string>();
+
+  [...allResearch, ...allThoughts].forEach((item) => {
+    item.data.tags.forEach((tag) => {
+      allTags.add(tag.toLowerCase().replace(/\s+/g, '-'));
+    });
+  });
+
+  return Array.from(allTags).map((tagSlug) => ({
+    params: { tag: tagSlug },
+  }));
+}
+
+const { tag } = Astro.params;
+
+const allResearch = await getCollection('research', ({ data }) => !data.draft);
+const allThoughts = await getCollection('thoughts', ({ data }) => !data.draft);
+
+const matchingResearch = allResearch.filter(r => 
+  r.data.tags.some(t => t.toLowerCase().replace(/\s+/g, '-') === tag)
+);
+
+const matchingThoughts = allThoughts.filter(t => 
+  t.data.tags.some(t => t.toLowerCase().replace(/\s+/g, '-') === tag)
+);
+
+const originalTagName = [...allResearch, ...allThoughts]
+  .flatMap(i => i.data.tags)
+  .find(t => t.toLowerCase().replace(/\s+/g, '-') === tag) || tag;
+
+const totalMatching = matchingResearch.length + matchingThoughts.length;
+---
+
+<BaseLayout title={`Topic: #${originalTagName}`}>
+  <div class="mb-10 pb-6 border-b border-[var(--border-subtle)] flex items-center justify-between flex-wrap gap-4">
+    <div>
+      <div class="text-xs font-sans font-semibold uppercase tracking-wider text-[var(--accent-primary)] mb-1">
+        Topic Tag Archive • {totalMatching} {totalMatching === 1 ? 'Publication' : 'Publications'}
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-serif font-bold text-[var(--text-primary)]">
+        #{originalTagName}
+      </h1>
+    </div>
+
+    <a href="/topics" class="text-xs font-sans font-semibold text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition">
+      ← All Topics Index
+    </a>
+  </div>
+
+  <div class="space-y-12">
+    {matchingResearch.length > 0 && (
+      <div>
+        <h2 class="text-xl font-serif font-bold text-[var(--text-primary)] mb-4">Research Papers ({matchingResearch.length})</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {matchingResearch.map((item) => (
+            <ArticleCard
+              title={item.data.title}
+              description={item.data.description}
+              pubDate={item.data.pubDate}
+              slug={item.slug}
+              category={item.data.category}
+              tags={item.data.tags}
+              type="research"
+            />
+          ))}
+        </div>
+      </div>
+    )}
+
+    {matchingThoughts.length > 0 && (
+      <div>
+        <h2 class="text-xl font-serif font-bold text-[var(--text-primary)] mb-4">Thoughts Stream ({matchingThoughts.length})</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {matchingThoughts.map((item) => (
+            <ArticleCard
+              title={item.data.title}
+              description={item.data.description}
+              pubDate={item.data.pubDate}
+              slug={item.slug}
+              tags={item.data.tags}
+              type="thoughts"
+            />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

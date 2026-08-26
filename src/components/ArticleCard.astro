@@ -1,0 +1,80 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  slug: string;
+  category?: string;
+  tags: string[];
+  type: 'research' | 'thoughts';
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  slug,
+  category,
+  tags,
+  type,
+} = Astro.props;
+
+const formattedDate = new Date(pubDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+
+const href = `/${type}/${slug}`;
+---
+
+<article class="group relative flex flex-col justify-between rounded-2xl bg-[var(--bg-card)] border border-[var(--border-subtle)] overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[var(--border-accent)] hover:-translate-y-1">
+  <div class="p-6 flex-1 flex flex-col justify-between">
+    <div>
+      <!-- Badge & Date Row -->
+      <div class="flex items-center justify-between text-xs font-sans text-[var(--text-muted)] mb-3">
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-[var(--accent-primary)] uppercase tracking-wider text-[11px]">
+            {type === 'research' ? 'Research Paper' : 'Thought Stream'}
+          </span>
+          {category && (
+            <span class="px-2 py-0.5 rounded-full bg-[var(--tag-bg)] text-[var(--accent-primary)] text-[10px] font-medium border border-[var(--tag-border)]">
+              {category}
+            </span>
+          )}
+        </div>
+        <time datetime={pubDate.toISOString()} class="text-[11px]">{formattedDate}</time>
+      </div>
+
+      <!-- Title -->
+      <h3 class="text-xl font-serif font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors mb-2.5 leading-snug">
+        <a href={href}>
+          <span class="absolute inset-0 z-10"></span>
+          {title}
+        </a>
+      </h3>
+
+      <!-- Description -->
+      <p class="text-sm font-sans text-[var(--text-secondary)] line-clamp-3 mb-4 leading-relaxed">
+        {description}
+      </p>
+    </div>
+
+    <!-- Tags Footer -->
+    <div class="flex flex-wrap items-center justify-between gap-2 pt-4 border-t border-[var(--border-subtle)] font-sans text-[11px]">
+      <div class="flex flex-wrap gap-1.5 z-20">
+        {tags.slice(0, 3).map((tag) => (
+          <a
+            href={`/topics/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+            class="text-[var(--text-muted)] hover:text-[var(--accent-primary)] transition"
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+      <span class="text-[var(--accent-primary)] font-medium group-hover:translate-x-1 transition-transform">
+        Read →
+      </span>
+    </div>
+  </div>
+</article>
