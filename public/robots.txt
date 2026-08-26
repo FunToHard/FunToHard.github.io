@@ -1,0 +1,6 @@
+# Allow all crawlers, bots, and AI agents
+User-agent: *
+Allow: /
+
+# XML Sitemap Location
+Sitemap: https://funtohard.github.io/sitemap-index.xml

@@ -1,0 +1,18 @@
+# Philosophy Research & Thought Sharing Archive
+> Digital garden and research platform dedicated to Epistemology, Symbolic Logic, Ethics, Metaphysics, and Philosophy of Mind by funtohard.
+
+## Main Sections
+- [/research](https://funtohard.github.io/research): Peer-reviewed style long-form research papers with formal proofs, citations, and analytical frameworks.
+- [/thoughts](https://funtohard.github.io/thoughts): Short-form philosophical reflections, essays, micro-thoughts, and conceptual observations.
+- [/topics](https://funtohard.github.io/topics): Topic taxonomy including Epistemology, Logic, Ethics, Philosophy, Metaphysics, and Mind.
+
+## Key Research Topics
+1. **Epistemological Limits & Semantics**: The paradox of definition, semantic observer effects, and natural language syntax normalization.
+2. **Philosophy of Computation & Systems Programming**: Formal abstract virtual machines, compiler semantic contracts, and Undefined Behavior.
+3. **Ethics & Intellectual History**: Epistemic injustice, collaborative authorship, and historical erasure in philosophical partnerships.
+
+## Access & Syndication
+- AI Agent Guide: https://funtohard.github.io/agents.md
+- RSS Feed: https://funtohard.github.io/rss.xml
+- Sitemap: https://funtohard.github.io/sitemap-index.xml
+- GitHub Repository: https://github.com/funtohard/funtohard.github.io
