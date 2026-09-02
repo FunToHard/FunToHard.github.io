@@ -51,6 +51,7 @@ draft: false            # Default: false
 - **Justified Alignment**: Body paragraphs automatically use `text-align: justify`.
 - **LaTeX / KaTeX Math**: Use `$...$` for inline logic formulas and `$$...$$` for display math blocks.
 - **Right-Side Figures**: Use `<figure class="img-wrap-right"><img src="/images/..." alt="..." /><figcaption>...</figcaption></figure>`.
+- **Automatic Wikipedia Links**: Wrap obscure or technical terms in `[[qualia]]` or `[[Language game|language-games]]` to automatically generate Wikipedia links with dotted academic underlines.
 - **Citations**: Citations can be exported in BibTeX, APA, Chicago, and MLA formats.
 
 ---

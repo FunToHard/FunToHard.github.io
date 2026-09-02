@@ -86,6 +86,14 @@ To anchor an illustrative diagram or historical figure on the right side of the 
 - Use numbered superscript markers or standard Markdown list footnotes at the bottom of research publications.
 - Readers can export citations with 1 click via the built-in Citation Modal supporting **BibTeX**, **APA 7th**, **Chicago 17th**, and **MLA 9th**.
 
+### D. Automatic Wikipedia Concept Hyperlinks (`[[term]]`)
+To provide immediate definitions for specialized, obscure, or technical philosophical and scientific terms without manual link authoring:
+- **Direct Term**: Wrap the term in double brackets: `[[qualia]]` or `[[epistemic closure]]`.
+  - Automatically compiles to: `https://en.wikipedia.org/wiki/Qualia` or `https://en.wikipedia.org/wiki/Epistemic_closure`.
+- **Aliased Term**: Specify the Wikipedia topic followed by display text: `[[Infinite regress|infinite regress problem]]` or `[[Language game|language-game]]`.
+  - Automatically links to the canonical Wikipedia entry with customized sentence text.
+- Wikilinks automatically render with academic dotted underlining, definition hover tooltips, and external reference indicators (`↗`).
+
 ---
 
 ## 5. Built-in Scholarly Reading Suite
