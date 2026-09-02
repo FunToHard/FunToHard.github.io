@@ -8,11 +8,11 @@ draft: false
 
 ## Abstract
 
-Systems programming relies heavily on the concept of Undefined Behavior (UB). Determinists often critique this terminology and advocate for "Unknown Behavior". They argue that microprocessors, register files, and operating system kernels operate as deterministic state machines.
+Systems programming relies heavily on the concept of [[Undefined behavior|Undefined Behavior (UB)]]. Determinists often critique this terminology and advocate for "Unknown Behavior". They argue that microprocessors, register files, and operating system kernels operate as deterministic state machines.
 
 This paper proves why this determinist critique fails. Programming languages do not model physical silicon chips. Instead, programming languages specify formal abstract virtual machines.
 
-"Unknown" defines an epistemological limitation of human perception. "Undefined" defines an ontological void in the formal semantic contract.
+"Unknown" defines an epistemological limitation of human perception. "Undefined" defines an [[Ontology|ontological]] void in the formal semantic contract.
 
 Compilers exploit this ontological void to perform aggressive algebraic optimizations. Replacing undefined behavior with unknown behavior would break compiler invariants and severely degrade execution performance.
 
@@ -20,7 +20,7 @@ Compilers exploit this ontological void to perform aggressive algebraic optimiza
 
 ## 1. Introduction: The Bare-Metal Determinism Paradox
 
-Consider unsequenced variable modifications in C and C++ such as `a++ + a++`. The ISO standards classify this expression as Undefined Behavior.
+Consider unsequenced variable modifications in C and C++ such as `a++ + a++`. The ISO standards classify this expression as [[Undefined behavior|Undefined Behavior]].
 
 Physical computer hardware executes instructions deterministically. Digital logic gates, arithmetic logic units, and register files follow exact physical laws. The physical output of a compiled binary on a specific chip is reproducible and measurable.
 
@@ -34,13 +34,13 @@ The distinction between "undefined" and "unknown" marks the boundary between for
 
 ## 2. Epistemological Limitations vs. Ontological Contracts
 
-To evaluate programming terminology, we must separate epistemology from ontology.
+To evaluate programming terminology, we must separate [[Epistemology|epistemology]] from [[Ontology|ontology]].
 
 ### 2.1 The Epistemology of "Unknown"
 
 Epistemology examines the nature and limits of human knowledge. The term "unknown" describes a cognitive limitation of the human observer.
 
-A modern optimizing compiler executes hundreds of complex transformations. These passes include Abstract Syntax Tree (AST) canonicalization, Static Single Assignment (SSA) form conversions, register allocation, and instruction scheduling.
+A modern optimizing compiler executes hundreds of complex transformations. These passes include [[Abstract syntax tree|Abstract Syntax Tree (AST)]] canonicalization, [[Static single-assignment form|Static Single Assignment (SSA)]] form conversions, register allocation, and instruction scheduling.
 
 Human programmers cannot maintain the exact state of all compiler passes in memory. Therefore, the generated machine code remains epistemologically unknown to the human mind before translation.
 
