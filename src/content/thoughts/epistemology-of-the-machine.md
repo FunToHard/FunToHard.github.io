@@ -94,7 +94,7 @@ int check_overflow(int x) {
 We compiled `check_overflow` under varying flags to observe compiler deductions:
 
 * **GCC 15.2 (`-O2`) Assembly:**
-  ```assembly
+  ```asm
   check_overflow:
       xorl    %eax, %eax
       ret
@@ -102,7 +102,7 @@ We compiled `check_overflow` under varying flags to observe compiler deductions:
   GCC eliminates the addition, comparison, and conditional jump. Under ISO C, signed integer overflow is undefined. The optimizer assumes that `x + 1 < x` is mathematically impossible in well-formed programs.
 
 * **MSVC 19.51 (`/O2`) Assembly:**
-  ```assembly
+  ```asm
   _check_overflow PROC
       mov     edx, DWORD PTR _x$[esp-4]
       xor     eax, eax
@@ -114,7 +114,7 @@ We compiled `check_overflow` under varying flags to observe compiler deductions:
   MSVC emits the arithmetic addition and comparison instructions directly.
 
 * **GCC 15.2 with `-fwrapv` Assembly:**
-  ```assembly
+  ```asm
   check_overflow:
       xorl    %eax, %eax
       cmpl    $2147483647, %ecx
@@ -140,7 +140,7 @@ int count_loops(int n) {
 If `n = INT_MAX` wrapped physically, the loop would execute infinitely. Because signed overflow is undefined, GCC and MSVC prove that the loop terminates.
 
 GCC 15.2 transforms the entire loop into a closed-form conditional move:
-```assembly
+```asm
 count_loops:
     xorl    %edx, %edx
     leal    1(%rcx), %eax
@@ -166,7 +166,7 @@ int deref_check(int *ptr) {
 ```
 
 Under GCC 15.2 (`-O2`), the compiler emits:
-```assembly
+```asm
 deref_check:
     movl    (%rcx), %eax
     ret
