@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SearchModal from '../components/SearchModal.astro';
+import WikiPreviewCard from '../components/WikiPreviewCard.astro';
 
 interface Props {
   title: string;
@@ -136,6 +137,7 @@ const jsonLd = type === 'article' ? {
     </main>
     <Footer />
     <SearchModal />
+    <WikiPreviewCard />
 
     <style is:global>
       /* CSS Theme Design Tokens */
@@ -265,6 +267,35 @@ const jsonLd = type === 'article' ? {
         background-color: var(--accent-subtle);
         color: var(--accent-primary);
         border: 1px solid var(--border-subtle);
+      }
+
+      /* Automatic Wikipedia Definition Hyperlinks */
+      .prose a.wiki-term-link {
+        color: var(--accent-primary);
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
+        transition: all 0.15s ease-in-out;
+        border-radius: 2px;
+        padding: 0 1px;
+      }
+
+      .prose a.wiki-term-link:hover {
+        color: var(--accent-hover);
+        text-decoration-style: solid;
+        background-color: var(--accent-subtle);
+      }
+
+      .prose a.wiki-term-link::after {
+        content: "↗";
+        display: inline-block;
+        font-size: 0.7em;
+        vertical-align: super;
+        margin-left: 2px;
+        opacity: 0.65;
+        font-family: system-ui, sans-serif;
+        text-decoration: none;
       }
       
       /* Drop cap option for article opening paragraphs */

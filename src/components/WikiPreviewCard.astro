@@ -1,0 +1,195 @@
+---
+---
+
+<!-- Wikipedia Live Definition Hovercard -->
+<div
+  id="wiki-hover-card"
+  class="hidden fixed z-50 w-80 max-w-[90vw] p-4 rounded-2xl bg-[var(--bg-surface-elevated)] border border-[var(--border-accent)] shadow-2xl backdrop-blur-xl transition-all duration-200 pointer-events-auto font-sans"
+  role="tooltip"
+  aria-hidden="true"
+>
+  <!-- Loading skeleton -->
+  <div id="wiki-card-loading" class="animate-pulse space-y-2.5">
+    <div class="h-4 bg-[var(--bg-surface)] rounded w-3/4"></div>
+    <div class="h-3 bg-[var(--bg-surface)] rounded w-1/2"></div>
+    <div class="space-y-1.5 pt-1">
+      <div class="h-2.5 bg-[var(--bg-surface)] rounded"></div>
+      <div class="h-2.5 bg-[var(--bg-surface)] rounded w-5/6"></div>
+      <div class="h-2.5 bg-[var(--bg-surface)] rounded w-4/6"></div>
+    </div>
+  </div>
+
+  <!-- Real Content Container -->
+  <div id="wiki-card-content" class="hidden">
+    <div class="flex items-start gap-3">
+      <div class="flex-1 min-w-0">
+        <div id="wiki-card-type" class="text-[10px] uppercase font-bold tracking-wider text-[var(--accent-primary)] font-sans mb-0.5 truncate">
+          Wikipedia Definition
+        </div>
+        <h4 id="wiki-card-title" class="font-serif font-bold text-base text-[var(--text-primary)] leading-tight truncate"></h4>
+      </div>
+      <img
+        id="wiki-card-thumb"
+        class="hidden w-12 h-12 object-cover rounded-lg border border-[var(--border-subtle)] flex-shrink-0 bg-[var(--bg-surface)]"
+        alt="Thumbnail"
+        loading="lazy"
+      />
+    </div>
+
+    <p id="wiki-card-extract" class="text-xs font-sans text-[var(--text-secondary)] leading-relaxed mt-2.5 line-clamp-4"></p>
+
+    <div class="mt-3 pt-2.5 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px] font-sans">
+      <span class="text-[var(--text-muted)] flex items-center gap-1 font-mono text-[10px]">
+        <span>W</span> Wikipedia
+      </span>
+      <a
+        id="wiki-card-link"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[var(--accent-primary)] hover:underline font-semibold flex items-center gap-1"
+      >
+        Read on Wikipedia →
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const card = document.getElementById('wiki-hover-card');
+  const loading = document.getElementById('wiki-card-loading');
+  const content = document.getElementById('wiki-card-content');
+  const typeEl = document.getElementById('wiki-card-type');
+  const titleEl = document.getElementById('wiki-card-title');
+  const thumbEl = document.getElementById('wiki-card-thumb') as HTMLImageElement;
+  const extractEl = document.getElementById('wiki-card-extract');
+  const linkEl = document.getElementById('wiki-card-link') as HTMLAnchorElement;
+
+  const cache = new Map<string, any>();
+  let showTimeout: any = null;
+  let hideTimeout: any = null;
+  let currentTarget: HTMLElement | null = null;
+
+  const positionCard = (target: HTMLElement) => {
+    if (!card) return;
+    const rect = target.getBoundingClientRect();
+    const cardWidth = 320;
+    const cardHeight = card.offsetHeight || 180;
+    const margin = 12;
+
+    // Center horizontally relative to target, clamped inside viewport
+    let left = rect.left + rect.width / 2 - cardWidth / 2;
+    if (left < margin) left = margin;
+    if (left + cardWidth > window.innerWidth - margin) {
+      left = window.innerWidth - cardWidth - margin;
+    }
+
+    // Prefer positioning above target, flip below if close to top
+    let top = rect.top - cardHeight - 10;
+    if (top < margin) {
+      top = rect.bottom + 10;
+    }
+
+    card.style.top = `${top}px`;
+    card.style.left = `${left}px`;
+  };
+
+  const showCard = async (target: HTMLElement) => {
+    if (!card) return;
+    currentTarget = target;
+    const wikiTerm = target.getAttribute('data-wiki-term') || target.innerText.trim();
+    const formattedTerm = wikiTerm.charAt(0).toUpperCase() + wikiTerm.slice(1);
+    const wikiSlug = encodeURIComponent(formattedTerm.replace(/\s+/g, '_'));
+
+    card.classList.remove('hidden');
+    positionCard(target);
+
+    // Show loading skeleton while fetching
+    if (loading && content) {
+      loading.classList.remove('hidden');
+      content.classList.add('hidden');
+    }
+
+    let data = cache.get(wikiSlug);
+
+    if (!data) {
+      try {
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${wikiSlug}`, {
+          headers: { 'Api-User-Agent': 'funtohard-philosophy/1.0 (https://funtohard.github.io)' }
+        });
+        if (res.ok) {
+          data = await res.json();
+          cache.set(wikiSlug, data);
+        } else {
+          data = { title: formattedTerm, extract: `Explore comprehensive philosophical definitions, historical background, and logical formalisms for ${formattedTerm} on Wikipedia.` };
+        }
+      } catch (e) {
+        data = { title: formattedTerm, extract: `Explore comprehensive philosophical definitions, historical background, and logical formalisms for ${formattedTerm} on Wikipedia.` };
+      }
+    }
+
+    // Abort rendering if user has already moved cursor away
+    if (currentTarget !== target) return;
+
+    if (titleEl) titleEl.innerText = data.title || formattedTerm;
+    if (typeEl) typeEl.innerText = data.description || 'Wikipedia Definition';
+    if (extractEl) extractEl.innerText = data.extract || 'No extract summary available.';
+    if (linkEl) linkEl.href = `https://en.wikipedia.org/wiki/${wikiSlug}`;
+
+    if (thumbEl) {
+      if (data.thumbnail && data.thumbnail.source) {
+        thumbEl.src = data.thumbnail.source;
+        thumbEl.classList.remove('hidden');
+      } else {
+        thumbEl.classList.add('hidden');
+      }
+    }
+
+    if (loading && content) {
+      loading.classList.add('hidden');
+      content.classList.remove('hidden');
+    }
+
+    positionCard(target);
+  };
+
+  const hideCard = () => {
+    if (!card) return;
+    card.classList.add('hidden');
+    currentTarget = null;
+  };
+
+  // Event Delegation for all .wiki-term-link elements
+  document.addEventListener('mouseover', (e) => {
+    const target = (e.target as HTMLElement)?.closest('.wiki-term-link') as HTMLElement;
+    if (target) {
+      clearTimeout(hideTimeout);
+      clearTimeout(showTimeout);
+      showTimeout = setTimeout(() => {
+        showCard(target);
+      }, 180);
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const target = (e.target as HTMLElement)?.closest('.wiki-term-link');
+    if (target) {
+      clearTimeout(showTimeout);
+      hideTimeout = setTimeout(() => {
+        hideCard();
+      }, 220);
+    }
+  });
+
+  // Keep card open when hovering over the preview card itself
+  if (card) {
+    card.addEventListener('mouseenter', () => {
+      clearTimeout(hideTimeout);
+    });
+    card.addEventListener('mouseleave', () => {
+      hideTimeout = setTimeout(() => {
+        hideCard();
+      }, 180);
+    });
+  }
+</script>
