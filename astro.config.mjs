@@ -20,7 +20,12 @@ export default defineConfig({
     remarkPlugins: [remarkMath, remarkWikilinks],
     rehypePlugins: [rehypeKatex],
     shikiConfig: {
-      theme: 'github-dark-dimmed',
+      themes: {
+        obsidian: 'github-dark-dimmed',
+        parchment: 'catppuccin-latte',
+        oxford: 'tokyo-night',
+      },
+      defaultColor: false,
       wrap: true,
     },
   },
