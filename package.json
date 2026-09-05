@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --host",
+    "start": "astro dev --host",
     "build:astro": "astro check && astro build",
     "build:rmergency": "npm --prefix R-mergency run build",
     "copy:rmergency": "node scripts/copy-rmergency.mjs",

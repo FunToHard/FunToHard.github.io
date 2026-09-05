@@ -9,6 +9,16 @@ import { remarkWikilinks } from './src/plugins/remark-wikilinks.mjs';
 export default defineConfig({
   site: 'https://funtohard.github.io',
   base: '/',
+  server: {
+    host: true,
+    port: 8087,
+    allowedHosts: true,
+  },
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
   trailingSlash: 'ignore',
   integrations: [
     sitemap(),
