@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist",
+    "build:astro": "astro check && astro build",
+    "build:rmergency": "npm --prefix R-mergency run build",
+    "copy:rmergency": "node scripts/copy-rmergency.mjs",
+    "build": "npm run build:astro && npm run build:rmergency && npm run copy:rmergency && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
