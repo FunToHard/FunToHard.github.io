@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { remarkWikilinks } from './src/plugins/remark-wikilinks.mjs';
+import { getRmergencyUrls } from './scripts/rmergency-urls.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,7 +23,7 @@ export default defineConfig({
   trailingSlash: 'ignore',
   integrations: [
     sitemap({
-      customPages: ['https://funtohard.github.io/r-mergency/'],
+      customPages: getRmergencyUrls('https://funtohard.github.io'),
     }),
     tailwind({
       applyBaseStyles: true,
