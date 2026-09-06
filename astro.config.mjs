@@ -21,7 +21,9 @@ export default defineConfig({
   },
   trailingSlash: 'ignore',
   integrations: [
-    sitemap(),
+    sitemap({
+      customPages: ['https://funtohard.github.io/r-mergency/'],
+    }),
     tailwind({
       applyBaseStyles: true,
     }),
